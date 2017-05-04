@@ -1,0 +1,2 @@
+# SchedulePlanner
+Pick your classes!
