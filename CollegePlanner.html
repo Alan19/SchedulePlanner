@@ -2,14 +2,21 @@
 	<!-- Javiy Wang -->
 	<html> <!-- parent -->
 		<head> <!-- child -->
-			<title> College Planner </title>
-			<style>
+			<title> Schedule Planner </title>
+			<!-- Compiled and minified CSS -->
+			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+
+			<!-- Compiled and minified JavaScript -->
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+
+			<!--<style>
 				#title 
 				{
 					font-size:50px;
 				}
 				center
 				{
+					font-size:20px;
 					background-color:lightgray;
 					border-style:solid;
 				}
@@ -17,11 +24,11 @@
 				{
 					background-size:100%;
 				}
-			</style>  
+			</style>  -->
 			<script>
 				function intialize()
 				{
-					input = document.getElementById("answer");
+					input = document.getElementById("teacher");
 					startingList = document.getElementById("grocerylist");
 					input2 = document.getElementById("whichitem");
 					newList = [];
@@ -31,22 +38,49 @@
 			</script>
 		</head>
 		<body onload = "intialize();" background = "">
-		
-			<center id = "title"> College Planner </center>
-			<input id = "answer" type = "text"/>
-			<button onclick = "addItem();"> Search For Profesor </button>
-			
+			<nav class="light-blue lighten-1" role="navigation">
+				<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="#">Classes</a></li>
+				</ul>
+
+				<ul id="nav-mobile" class="side-nav">
+					<li><a href="#">Classes</a></li>
+				</ul>
+				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+				</div>
+			</nav>
+			<div class = "row">
+				<div class = "col s6">
+					<a class='dropdown-button btn' data-activates='dropdown1'>Which CUNY are you enrolling in?</a>
+					<!--<select>
+						<option>-Please Select A CUNY-</option>
+						<option value="hunter">Hunter College</option>
+						<option value="city">City College</option>
+						<option value="baruch">Baruch</option>
+						<option value="brooklyn">Brooklyn College</option>
+						<option value="queens">Queens College</option>
+					</select>-->
+					<ul class="collection">
+					<li class="collection-item">Hunter College</li>
+					<li class="collection-item">City College</li>
+					<li class="collection-item">Baruch</li>
+					<li class="collection-item">Brooklyn College</li>
+					<li class="collection-item">Queens College</li>
+				</div>
+			</div>
+
+			</ul>
 			<center>
-				Which CUNY are you enrolling in?
+				Which term are you enrolling in?
 				<select>
-					<option>-Please Select A CUNY-</option>
-					<option value="hunter">Hunter College</option>
-					<option value="city">City College</option>
-					<option value="baruch">Baruch</option>
-					<option value="brooklyn">Brooklyn College</option>
-					<option value="queens">Queens College</option>
+					<option>-Please Select The Course Time-</option>
+					<option value="fall">Fall 2017</option>
+					<option value="spring">Spring 2018</option>
 				</select>
 			</center>
+			<input id = "teacher" type = "text"/>
+			<button onclick = "addItem();"> Search For Profesor </button>
 			<ol id = "grocerylist"> List </ol>
 			
 		</body>
