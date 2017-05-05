@@ -4,11 +4,13 @@
 		<head> <!-- child -->
 			<title> College Planner </title>
 			<style>
-				h1
+				center title
 				{
-					float:right;
-					margin-right:200px;
-					background-color:light gray;
+					font-size:200px;
+				}
+				center
+				{
+					background-color:lightgray;
 					border-style:solid;
 				}
 				body
@@ -30,20 +32,21 @@
 		</head>
 		<body onload = "intialize();" background = "">
 		
-			<div> College Planner </div>
+			<center id = "title"> College Planner </center>
 			<input id = "answer" type = "text"/>
 			<button onclick = "addItem();"> Add Item </button>
 			
-			<h1>
+			<center>
 				Which CUNY are you enrolling in?
 				<select>
+					<option>-Please Select A CUNY-</option>
 					<option value="hunter">Hunter College</option>
 					<option value="city">City College</option>
 					<option value="baruch">Baruch</option>
 					<option value="brooklyn">Brooklyn College</option>
 					<option value="queens">Queens College</option>
 				</select>
-			</h1>
+			</center>
 			<ol id = "grocerylist"> List </ol>
 			
 		</body>
