@@ -30,6 +30,13 @@
             	newList = [];
             	startingList.innerHTML = newList;
             }
+
+            //Include # in dropdownID in the parameter
+            function changeDropdownText(dropdownID, college){
+                originalWidth = $(dropdownID).width();
+                $(dropdownID).html(college);
+                $(dropdownID).width(originalWidth);
+            }
         </script>
     </head>
     <body onload = "intialize();" background = "">
@@ -54,20 +61,20 @@
                 </div>
                 <div class = "row">
                     <div class = "col s6">
-                        <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true">Which CUNY are you enrolling in?</a>
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id = 'school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
                         <ul id='dropdown1' class='dropdown-content'>
-                            <li><a href="#!">Hunter College</a></li>
-                            <li><a href="#!">City College</a></li>
-                            <li><a href="#!">Baruch</a></li>
-                            <li><a href="#!">Brooklyn College</a></li>
-                            <li><a href="#!">Queens College</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#school','Hunter College')">Hunter College</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#school','City College')">City College</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#school','Baruch College')">Baruch College</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#school','Brooklyn College')">Brooklyn College</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#school','Queens College')">Queens College</a></li>
                         </ul>
                     </div>
                     <div class = "col s6">
-                        <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true">What term are you enrolling in?</a>
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
                         <ul id='dropdown2' class='dropdown-content'>
-                            <li><a href="#!">Fall 2017</a></li>
-                            <li><a href="#!">Spring 2018</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#semester','Fall 2017')">Fall 2017</a></li>
+                            <li><a href="#" onclick = "changeDropdownText('#semester','Spring 2018')">Spring 2018</a></li>
                         </ul>
                     </div>
                 </div>
