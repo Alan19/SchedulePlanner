@@ -1,138 +1,143 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <!-- Javiy Wang -->
 <html>
-    <!-- parent -->
-    <head>
-        <!-- child -->
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-        <title>Schedule Planner</title>
-        <!-- CSS  -->
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-        <style>
-            body {
+<!-- parent -->
+
+<head>
+    <!-- child -->
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Schedule Planner</title>
+    <!-- CSS  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <style>
+        body {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
-            }
-            main {
-            flex: 1 0 auto;
-            }
-        </style>
-        <script>
-            function intialize()
-            {
-            	input = document.getElementById("teacher");
-            	startingList = document.getElementById("grocerylist");
-            	input2 = document.getElementById("whichitem");
-            	newList = [];
-            	startingList.innerHTML = newList;
-            }
+        }
 
-            //Include # in dropdownID in the parameter
-            function changeDropdownText(dropdownID, college){
-                originalWidth = $(dropdownID).width();
-                $(dropdownID).html(college);
-                $(dropdownID).width(originalWidth);
-            }
-        </script>
-    </head>
-    <body onload = "intialize();" background = "">
-        <nav class="light-blue lighten-1" role="navigation">
-            <div class="nav-wrapper container">
-                <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
-                <ul class="right hide-on-med-and-down">
-                    <li><a href="#">Classes</a></li>
-                </ul>
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="#">Classes</a></li>
-                </ul>
-                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-            </div>
-        </nav>
-        <br />
-        <center>
-            <div class = "container">
-                <div class = "row">
-                    <h1 class="blue-text lighten-5
+        main {
+            flex: 1 0 auto;
+        }
+    </style>
+    <script>
+        function intialize() {
+            input = document.getElementById("teacher");
+            startingList = document.getElementById("grocerylist");
+            input2 = document.getElementById("whichitem");
+            newList = [];
+            startingList.innerHTML = newList;
+        }
+
+        //Include # in dropdownID in the parameter
+        function changeDropdownText(dropdownID, college) {
+            originalWidth = $(dropdownID).width();
+            $(dropdownID).html(college);
+            $(dropdownID).width(originalWidth);
+        }
+    </script>
+</head>
+
+<body onload="intialize();" background="">
+    <nav class="light-blue lighten-1" role="navigation">
+        <div class="nav-wrapper container">
+            <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Classes</a></li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Classes</a></li>
+            </ul>
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+    <br />
+    <center>
+        <div class="container">
+            <div class="row">
+                <h1 class="blue-text lighten-5
                         ">Select your school and year</h1>
+            </div>
+            <div class="row">
+                <div class="col s6">
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id='school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
+                    <ul id='dropdown1' class='dropdown-content'>
+                        <li><a href="#" onclick="changeDropdownText('#school','Hunter College')">Hunter College</a></li>
+                        <li><a href="#" onclick="changeDropdownText('#school','City College')">City College</a></li>
+                        <li><a href="#" onclick="changeDropdownText('#school','Baruch College')">Baruch College</a></li>
+                        <li><a href="#" onclick="changeDropdownText('#school','Brooklyn College')">Brooklyn College</a></li>
+                        <li><a href="#" onclick="changeDropdownText('#school','Queens College')">Queens College</a></li>
+                    </ul>
                 </div>
-                <div class = "row">
-                    <div class = "col s6">
-                        <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id = 'school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
-                        <ul id='dropdown1' class='dropdown-content'>
-                            <li><a href="#" onclick = "changeDropdownText('#school','Hunter College')">Hunter College</a></li>
-                            <li><a href="#" onclick = "changeDropdownText('#school','City College')">City College</a></li>
-                            <li><a href="#" onclick = "changeDropdownText('#school','Baruch College')">Baruch College</a></li>
-                            <li><a href="#" onclick = "changeDropdownText('#school','Brooklyn College')">Brooklyn College</a></li>
-                            <li><a href="#" onclick = "changeDropdownText('#school','Queens College')">Queens College</a></li>
-                        </ul>
-                    </div>
-                    <div class = "col s6">
-                        <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
-                        <ul id='dropdown2' class='dropdown-content'>
-                            <li><a href="#" onclick = "changeDropdownText('#semester','Fall 2017')">Fall 2017</a></li>
-                            <li><a href="#" onclick = "changeDropdownText('#semester','Spring 2018')">Spring 2018</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <br />
-                <div class="row">
-                    <div class = "input-field col s12">
-                        <input id = "teacher" type = "text" class = "validate"/>
-                        <label for="teacher">Teacher's name</label>
-                    </div>
-                </div>
-                <div class="row">
-                    <center>
-                        <button class="btn waves-effect waves-light" type="submit" name="action" onclick = "addItem();">Search for professors  <i class="material-icons right">search</i> </button>
-                    </center>
-                    <!--<div class="col s12">This div is 12-columns wide</div>-->
+                <div class="col s6">
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
+                    <ul id='dropdown2' class='dropdown-content'>
+                        <li><a href="#" onclick="changeDropdownText('#semester','Fall 2017')">Fall 2017</a></li>
+                        <li><a href="#" onclick="changeDropdownText('#semester','Spring 2018')">Spring 2018</a></li>
+                    </ul>
                 </div>
             </div>
-        </center>
-        <!--<button onclick = "addItem();"> Search For Profesor </button>-->
-        <ol id = "grocerylist"> List </ol>
-        <!--  Scripts-->
-        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script src="js/materialize.js"></script>
-        <script src="js/init.js"></script>
-        <footer class="page-footer orange">
+            <br />
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="teacher" type="text" class="validate" />
+                    <label for="teacher">Teacher's name</label>
+                </div>
+            </div>
+            <div class="row">
+                <center>
+                    <button class="btn waves-effect waves-light" type="submit" name="action" onclick="addItem();">Search for professors  <i class="material-icons right">search</i> </button>
+                </center>
+                <!--<div class="col s12">This div is 12-columns wide</div>-->
+            </div>
+        </div>
+    </center>
+    <!--<button onclick = "addItem();"> Search For Profesor </button>-->
+    <ol id="grocerylist"> List </ol>
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    <footer class="page-footer orange">
+        <div class="container">
+            <div class="row">
+                <div class="col l6 s12">
+                    <h5 class="white-text">Company Bio</h5>
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would
+                        help support and continue development on this project and is greatly appreciated.</p>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Settings</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+                <div class="col l3 s12">
+                    <h5 class="white-text">Connect</h5>
+                    <ul>
+                        <li><a class="white-text" href="#!">Link 1</a></li>
+                        <li><a class="white-text" href="#!">Link 2</a></li>
+                        <li><a class="white-text" href="#!">Link 3</a></li>
+                        <li><a class="white-text" href="#!">Link 4</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
             <div class="container">
-                <div class="row">
-                    <div class="col l6 s12">
-                        <h5 class="white-text">Company Bio</h5>
-                        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">Settings</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                            <li><a class="white-text" href="#!">Link 3</a></li>
-                            <li><a class="white-text" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
-                    <div class="col l3 s12">
-                        <h5 class="white-text">Connect</h5>
-                        <ul>
-                            <li><a class="white-text" href="#!">Link 1</a></li>
-                            <li><a class="white-text" href="#!">Link 2</a></li>
-                            <li><a class="white-text" href="#!">Link 3</a></li>
-                            <li><a class="white-text" href="#!">Link 4</a></li>
-                        </ul>
-                    </div>
-                </div>
+                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
             </div>
-            <div class="footer-copyright">
-                <div class="container">
-                    Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
-                </div>
-            </div>
-        </footer>
-    </body>
+        </div>
+    </footer>
+</body>
+
 </html>
 </body>
+
 </html>
