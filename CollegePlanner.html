@@ -1,87 +1,86 @@
-	<!DOCTYPE html> 
-	<!-- Javiy Wang -->
-	<html> <!-- parent -->
-		<head> <!-- child -->
-			<title> Schedule Planner </title>
-			<!-- Compiled and minified CSS -->
-			<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
-
-			<!-- Compiled and minified JavaScript -->
-			<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
-
-			<!--<style>
-				#title 
-				{
-					font-size:50px;
-				}
-				center
-				{
-					font-size:20px;
-					background-color:lightgray;
-					border-style:solid;
-				}
-				body
-				{
-					background-size:100%;
-				}
-			</style>  -->
-			<script>
-				function intialize()
-				{
-					input = document.getElementById("teacher");
-					startingList = document.getElementById("grocerylist");
-					input2 = document.getElementById("whichitem");
-					newList = [];
-					startingList.innerHTML = newList;
-				}
-				
-			</script>
-		</head>
-		<body onload = "intialize();" background = "">
-			<nav class="light-blue lighten-1" role="navigation">
-				<div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
-				<ul class="right hide-on-med-and-down">
-					<li><a href="#">Classes</a></li>
-				</ul>
-
-				<ul id="nav-mobile" class="side-nav">
-					<li><a href="#">Classes</a></li>
-				</ul>
-				<a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-				</div>
-			</nav>
-			<div class = "row">
-				<div class = "col s6">
-					<a class='dropdown-button btn' data-activates='dropdown1'>Which CUNY are you enrolling in?</a>
-					<!--<select>
-						<option>-Please Select A CUNY-</option>
-						<option value="hunter">Hunter College</option>
-						<option value="city">City College</option>
-						<option value="baruch">Baruch</option>
-						<option value="brooklyn">Brooklyn College</option>
-						<option value="queens">Queens College</option>
-					</select>-->
-					<ul class="collection">
-					<li class="collection-item">Hunter College</li>
-					<li class="collection-item">City College</li>
-					<li class="collection-item">Baruch</li>
-					<li class="collection-item">Brooklyn College</li>
-					<li class="collection-item">Queens College</li>
-				</div>
-			</div>
-
-			</ul>
-			<center>
-				Which term are you enrolling in?
-				<select>
-					<option>-Please Select The Course Time-</option>
-					<option value="fall">Fall 2017</option>
-					<option value="spring">Spring 2018</option>
-				</select>
-			</center>
-			<input id = "teacher" type = "text"/>
-			<button onclick = "addItem();"> Search For Profesor </button>
-			<ol id = "grocerylist"> List </ol>
-			
-		</body>
-	</html>
+<!DOCTYPE html> 
+<!-- Javiy Wang -->
+<html>
+    <!-- parent -->
+    <head>
+        <!-- child -->
+        <title> Schedule Planner </title>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+        <script>
+            function intialize()
+            {
+            	input = document.getElementById("teacher");
+            	startingList = document.getElementById("grocerylist");
+            	input2 = document.getElementById("whichitem");
+            	newList = [];
+            	startingList.innerHTML = newList;
+            }
+			$( "#dropdownA" ).click(function() {
+				alert( "Handler for .click() called." );
+			});
+        </script>
+    </head>
+    <body onload = "intialize();" background = "">
+        <nav class="light-blue lighten-1" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Classes</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#">Classes</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+            </div>
+        </nav>
+        <center>
+            <div class="container">
+                <div class = "row">
+                    <div class = "col s6">
+                        <a id = 'dropdownA' class='dropdown-button btn' href='#' data-activates='dropdown1'>Which CUNY are you enrolling in?</a>
+                        <!--<select>
+                            <option>-Please Select A CUNY-</option>
+                            <option value="hunter">Hunter College</option>
+                            <option value="city">City College</option>
+                            <option value="baruch">Baruch</option>
+                            <option value="brooklyn">Brooklyn College</option>
+                            <option value="queens">Queens College</option>
+                            </select>-->
+                        <ul id='dropdown1' class='dropdown-content'>
+                            <li onclick = ><a href="#">Hunter College</a></li>
+                            <li><a href="#" id="city-college">City College</a></li>
+                            <li><a href="#" id="baruch">Baruch</a></li>
+                            <li><a href="#" id="brooklyn-college">Brooklyn College</a></li>
+                            <li><a href="#" id="queens-college">Queens College</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s6">
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown2'>Which term are you enrolling in?</a>
+                        <ul id='dropdown2' class='dropdown-content'>
+                            <li><a href="#">Fall 2017</a></li>
+                            <li><a href="#">Spring 2018</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </center>
+        <!--<center>
+            Which term are you enrolling in?
+            <select>
+            	<option>-Please Select The Course Time-</option>
+            	<option value="fall">Fall 2017</option>
+            	<option value="spring">Spring 2018</option>
+            </select>
+            </center>-->
+        <input id = "teacher" type = "text"/>
+        <button onclick = "addItem();"> Search For Profesor </button>
+        <ol id = "grocerylist"> List </ol>
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+    </body>
+</html>
