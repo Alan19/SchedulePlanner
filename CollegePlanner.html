@@ -23,18 +23,57 @@
     </style>
     <script>
         function intialize() {
-            input = document.getElementById("teacher");
-            startingList = document.getElementById("grocerylist");
-            input2 = document.getElementById("whichitem");
-            newList = [];
-            startingList.innerHTML = newList;
+            // input = document.getElementById("teacher");
+            // startingList = document.getElementById("grocerylist");
+            // input2 = document.getElementById("whichitem");
+            // newList = [];
+            // startingList.innerHTML = newList;
+
+
+            // var select = document.getElementById("selectNumber"); 
+            hunterClasses = ["ACC","ACSK","ADSUP","ANTH","ANTHC","ABTHP,","ARB","ARTCR","ARTH","ARTLA","ASAIN","ASTRO",
+            "BIOCH","BIOL","CEDC","CEDF","CHEM","CHIN","CHND","CLA","COCO","COMPL","COMSC","COUNM","COUNR","COUNS","CSCI",
+            "DAN","DANED","ECC","ECF","ECO","EDESL","EDF","EDLIT","ENGL",""]; 
+
+            // for(var i = 0; i < hunterClasses.length; i++) {
+            //     var opt = hunterClasses[i];
+            //     var el = document.createElement("hunterClasses");
+            //     el.textContent = opt;
+            //     el.value = opt;
+            //     select.appendChild(el);
+            // }​
+            
         }
 
         //Include # in dropdownID in the parameter
-        function changeDropdownText(dropdownID, college) {
-            originalWidth = $(dropdownID).width();
-            $(dropdownID).html(college);
-            $(dropdownID).width(originalWidth);
+        function changeDropdownText(dropdownID, text) {
+            originalWidth = $("#"+dropdownID).width();
+            $("#"+dropdownID).html(text);
+            $("#"+dropdownID).width(originalWidth);
+        }
+
+        function checkTheClasses(){
+
+        }
+
+        function populate(){
+            // console.log("hello");
+            if(currentCollege == "Hunter College"){
+                // console.log(currentCollege);                
+                for(i = 0; i < hunterClasses.length; i++){
+                    console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
+                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${hunterClasses[i]}')">${hunterClasses[i]}</a></li>`);
+                }
+            }
+        }
+
+        function changeCollege(dropdownID, college){
+             originalWidth = $("#"+dropdownID).width();
+            $("#"+dropdownID).html(college);
+            $("#"+dropdownID).width(originalWidth);
+            currentCollege = college;
+            // alert("College set");
+            populate();
         }
     </script>
 </head>
@@ -56,29 +95,50 @@
     <center>
         <div class="container">
             <div class="row">
-                <h1 class="blue-text lighten-5
-                        ">Select your school and year</h1>
+                <h1 class="blue-text lighten-5">Select your school and year</h1>
             </div>
             <div class="row">
                 <div class="col s6">
                     <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id='school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
                     <ul id='dropdown1' class='dropdown-content'>
-                        <li><a href="#" onclick="changeDropdownText('#school','Hunter College')">Hunter College</a></li>
-                        <li><a href="#" onclick="changeDropdownText('#school','City College')">City College</a></li>
-                        <li><a href="#" onclick="changeDropdownText('#school','Baruch College')">Baruch College</a></li>
-                        <li><a href="#" onclick="changeDropdownText('#school','Brooklyn College')">Brooklyn College</a></li>
-                        <li><a href="#" onclick="changeDropdownText('#school','Queens College')">Queens College</a></li>
+                        <li><a href="#" onclick="changeCollege('school','Hunter College')">Hunter College</a></li>
+                        <li><a href="#" onclick="changeCollege('school','City College')">City College</a></li>
+                        <li><a href="#" onclick="changeCollege('school','Baruch College')">Baruch College</a></li>
+                        <li><a href="#" onclick="changeCollege('school','Brooklyn College')">Brooklyn College</a></li>
+                        <li><a href="#" onclick="changeCollege('school','Queens College')">Queens College</a></li>
                     </ul>
                 </div>
                 <div class="col s6">
                     <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
                     <ul id='dropdown2' class='dropdown-content'>
-                        <li><a href="#" onclick="changeDropdownText('#semester','Fall 2017')">Fall 2017</a></li>
-                        <li><a href="#" onclick="changeDropdownText('#semester','Spring 2018')">Spring 2018</a></li>
+                        <li><a href="#" onclick="changeDropdownText('semester','Fall 2017')">Fall 2017</a></li>
+                        <li><a href="#" onclick="changeDropdownText('semester','Summer 2017')">Summer 2017</a></li>
+                        <li><a href="#" onclick="changeDropdownText('semester','Spring 2018')">Spring 2018</a></li>
                     </ul>
                 </div>
             </div>
             <br />
+            </div class = "row">
+
+
+            <div class="col s6">
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown3' data-hover="true" id='classes' data-belowOrigin='true' >What course are you looking for?</a>
+                    <ul id='dropdown3' class='dropdown-content'>
+                        <!--<li><a href="#" onclick="changeDropdownText('classes','MATH')">MATH</a></li>
+                        <li><a href="#" onclick="changeDropdownText('classes','STAT')">STAT</a></li>-->
+                    </ul>
+                </div></br>
+                <div class="col s6">
+                    <a class='dropdown-button btn' href='#' data-activates='dropdown4' data-hover="true" id='courseNumber' data-belowOrigin='true'>What course number are you looking for?</a>
+                    <ul id='dropdown4' class='dropdown-content'>
+                        <li><a href="#" onclick="changeDropdownText('courseNumber','101')">101</a></li>
+                        <li><a href="#" onclick="changeDropdownText('courseNumber','102')">102</a></li>
+                        <li><a href="#" onclick="changeDropdownText('courseNumber','201')">201</a></li>
+                        <li><a href="#" onclick="changeDropdownText('courseNumber','202')">202</a></li>
+                        <li><a href="#" onclick="changeDropdownText('courseNumber','202')">250</a></li>
+                    </ul>
+                </div>
+            </div>
             <div class="row">
                 <div class="input-field col s12">
                     <input id="teacher" type="text" class="validate" />
@@ -94,7 +154,7 @@
         </div>
     </center>
     <!--<button onclick = "addItem();"> Search For Profesor </button>-->
-    <ol id="grocerylist"> List </ol>
+
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
