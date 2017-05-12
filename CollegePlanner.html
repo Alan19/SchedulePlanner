@@ -33,7 +33,12 @@
             // var select = document.getElementById("selectNumber"); 
             hunterClasses = ["ACC","ACSK","ADSUP","ANTH","ANTHC","ABTHP,","ARB","ARTCR","ARTH","ARTLA","ASAIN","ASTRO",
             "BIOCH","BIOL","CEDC","CEDF","CHEM","CHIN","CHND","CLA","COCO","COMPL","COMSC","COUNM","COUNR","COUNS","CSCI",
-            "DAN","DANED","ECC","ECF","ECO","EDESL","EDF","EDLIT","ENGL",""]; 
+            "DAN","DANED","ECC","ECF","ECO","EDESL","EDF","EDLIT","ENGL","Education - BILED","Education - SPEDE","FILM","FIMLP"
+            ,"FRENCH","GEOG",'GEOL','GERMN']; 
+            cityClasses = [];
+            baruchClasses = [];
+            queensClasses = [];
+            brooklynClasses = [];
 
             // for(var i = 0; i < hunterClasses.length; i++) {
             //     var opt = hunterClasses[i];
@@ -56,13 +61,30 @@
 
         }
 
-        function populate(){
+        function populate(college){
             // console.log("hello");
-            if(currentCollege == "Hunter College"){
+            $("#dropdown3").html("");
+            if(college == "Hunter College"){
                 // console.log(currentCollege);                
                 for(i = 0; i < hunterClasses.length; i++){
-                    console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
+                    // console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
                     $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${hunterClasses[i]}')">${hunterClasses[i]}</a></li>`);
+                }
+            }else if(college == "City College"){
+                for(i = 0; i < cityClasses.length; i++){
+                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${cityClasses[i]}')">${cityClasses[i]}</a></li>`);
+                }
+            }else if(college == "Baruch College"){
+                for(i = 0; i < baruchClasses.length; i++){
+                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${baruchClasses[i]}')">${baruchClasses[i]}</a></li>`);
+                }
+            }else if(college == "Queens College"){
+                for(i = 0; i < queensClasses.length; i++){
+                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${queensClasses[i]}')">${queensClasses[i]}</a></li>`);
+                }
+            }else{
+                for(i = 0; i < brooklynClasses.length; i++){
+                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${brooklynClasses[i]}')">${brooklynClasses[i]}</a></li>`);
                 }
             }
         }
@@ -73,7 +95,7 @@
             $("#"+dropdownID).width(originalWidth);
             currentCollege = college;
             // alert("College set");
-            populate();
+            populate(college);
         }
     </script>
 </head>
