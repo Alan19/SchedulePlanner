@@ -1,223 +1,248 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <!-- child -->
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
-    <title>Schedule Planner</title>
-    <!-- CSS  -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <style>
-        body {
+    <head>
+        <!-- child -->
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+        <title>Schedule Planner</title>
+        <!-- CSS  -->
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+        <style>
+            body {
             display: flex;
             min-height: 100vh;
             flex-direction: column;
-        }
-
-        main {
+            }
+            main {
             flex: 1 0 auto;
-        }
-    </style>
-    <script>
-        function intialize() {
-            // input = document.getElementById("teacher");
-            // startingList = document.getElementById("grocerylist");
-            // input2 = document.getElementById("whichitem");
-            // newList = [];
-            // startingList.innerHTML = newList;
-
-
-            // var select = document.getElementById("selectNumber"); 
-            hunterClasses = ["ACC","ACSK","ADSUP","ANTH","ANTHC","ABTHP,","ARB","ARTCR","ARTH","ARTLA","ASAIN","ASTRO",
-            "BIOCH","BIOL","CEDC","CEDF","CHEM","CHIN","CHND","CLA","COCO","COMPL","COMSC","COUNM","COUNR","COUNS","CSCI",
-            "DAN","DANED","ECC","ECF","ECO","EDESL","EDF","EDLIT","ENGL","Education - BILED","Education - SPEDE","FILM","FIMLP"
-            ,"FRENCH","GEOG",'GEOL','GERMN']; 
-            cityClasses = [];
-            baruchClasses = [];
-            queensClasses = [];
-            brooklynClasses = [];
-
-            // for(var i = 0; i < hunterClasses.length; i++) {
-            //     var opt = hunterClasses[i];
-            //     var el = document.createElement("hunterClasses");
-            //     el.textContent = opt;
-            //     el.value = opt;
-            //     select.appendChild(el);
-            // }​
+            }
+        </style>
+        <script>
+            function intialize() {
+                // input = document.getElementById("teacher");
+                // startingList = document.getElementById("grocerylist");
+                // input2 = document.getElementById("whichitem");
+                // newList = [];
+                // startingList.innerHTML = newList;
             
-        }
-
-        //Include # in dropdownID in the parameter
-        function changeDropdownText(dropdownID, text) {
-            originalWidth = $("#"+dropdownID).width();
-            $("#"+dropdownID).html(text);
-            $("#"+dropdownID).width(originalWidth);
-        }
-
-        function checkTheClasses(){
-
-        }
-
-        function populate(college){
-            // console.log("hello");
-            $("#dropdown3").html("");
-            if(college == "Hunter College"){
-                // console.log(currentCollege);                
-                for(i = 0; i < hunterClasses.length; i++){
-                    // console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
-                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${hunterClasses[i]}')">${hunterClasses[i]}</a></li>`);
-                }
-            }else if(college == "City College"){
-                for(i = 0; i < cityClasses.length; i++){
-                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${cityClasses[i]}')">${cityClasses[i]}</a></li>`);
-                }
-            }else if(college == "Baruch College"){
-                for(i = 0; i < baruchClasses.length; i++){
-                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${baruchClasses[i]}')">${baruchClasses[i]}</a></li>`);
-                }
-            }else if(college == "Queens College"){
-                for(i = 0; i < queensClasses.length; i++){
-                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${queensClasses[i]}')">${queensClasses[i]}</a></li>`);
-                }
-            }else{
-                for(i = 0; i < brooklynClasses.length; i++){
-                    $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${brooklynClasses[i]}')">${brooklynClasses[i]}</a></li>`);
+            
+                // var select = document.getElementById("selectNumber"); 
+                hunterClasses = ["ACC","ACSK","ADSUP","ANTH","ANTHC","ABTHP,","ARB","ARTCR","ARTH","ARTLA","ASAIN","ASTRO",
+                "BIOCH","BIOL","CEDC","CEDF","CHEM","CHIN","CHND","CLA","COCO","COMPL","COMSC","COUNM","COUNR","COUNS","CSCI",
+                "DAN","DANED","ECC","ECF","ECO","EDESL","EDF","EDLIT","ENGL","Education - BILED","Education - SPEDE","FILM","FIMLP"
+                ,"FRENCH","GEOG",'GEOL','GERMN','GRK','GSR','GTECH','HEBR','HIST','MLS','MUS','MUSHL','MUSIN','MUSPF','MUSTH','NURS',
+                'PERM','PHILO','PHYS','POL','POLSC','PORT','PSYCH','PT','']; 
+                cityClasses = [];
+                baruchClasses = [];
+                queensClasses = [];
+                brooklynClasses = [];
+            
+                // for(var i = 0; i < hunterClasses.length; i++) {
+                //     var opt = hunterClasses[i];
+                //     var el = document.createElement("hunterClasses");
+                //     el.textContent = opt;
+                //     el.value = opt;
+                //     select.appendChild(el);
+                // }​
+                
+            }
+            
+            //Include # in dropdownID in the parameter
+            function changeDropdownText(dropdownID, text) {
+                originalWidth = $("#"+dropdownID).width();
+                $("#"+dropdownID).html(text);
+                $("#"+dropdownID).width(originalWidth);
+            }
+            
+            function checkTheClasses(){
+            
+            }
+            
+            function populate(college){
+                // console.log("hello");
+                $("#dropdown3").html("");
+                if(college == "Hunter College"){
+                    // console.log(currentCollege);                
+                    for(i = 0; i < hunterClasses.length; i++){
+                        // console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
+                        $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${hunterClasses[i]}')">${hunterClasses[i]}</a></li>`);
+                    }
+                }else if(college == "City College"){
+                    for(i = 0; i < cityClasses.length; i++){
+                        $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${cityClasses[i]}')">${cityClasses[i]}</a></li>`);
+                    }
+                }else if(college == "Baruch College"){
+                    for(i = 0; i < baruchClasses.length; i++){
+                        $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${baruchClasses[i]}')">${baruchClasses[i]}</a></li>`);
+                    }
+                }else if(college == "Queens College"){
+                    for(i = 0; i < queensClasses.length; i++){
+                        $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${queensClasses[i]}')">${queensClasses[i]}</a></li>`);
+                    }
+                }else{
+                    for(i = 0; i < brooklynClasses.length; i++){
+                        $("#dropdown3").append(`<li><a href="#" onclick="changeDropdownText('classes','${brooklynClasses[i]}')">${brooklynClasses[i]}</a></li>`);
+                    }
                 }
             }
-        }
-
-        function changeCollege(dropdownID, college){
-             originalWidth = $("#"+dropdownID).width();
-            $("#"+dropdownID).html(college);
-            $("#"+dropdownID).width(originalWidth);
-            currentCollege = college;
-            // alert("College set");
-            populate(college);
-        }
-    </script>
-</head>
-
-<body onload="intialize();" background="">
-    <nav class="light-blue lighten-1" role="navigation">
-        <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Classes</a></li>
-            </ul>
-            <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Classes</a></li>
-            </ul>
-            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
-        </div>
-    </nav>
-    <br />
-    <center>
-        <div class="container">
-            <div class="row">
-                <h1 class="blue-text lighten-5">Select your school and year</h1>
+            
+            function changeCollege(dropdownID, college){
+                 originalWidth = $("#"+dropdownID).width();
+                $("#"+dropdownID).html(college);
+                $("#"+dropdownID).width(originalWidth);
+                currentCollege = college;
+                // alert("College set");
+                populate(college);
+            }
+        </script>
+    </head>
+    <body onload="intialize();" background="">
+        <nav class="light-blue lighten-1" role="navigation">
+            <div class="nav-wrapper container">
+                <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
+                <ul class="right hide-on-med-and-down">
+                    <li><a href="#">Classes</a></li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li><a href="#">Classes</a></li>
+                </ul>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
             </div>
-            <div class="row">
-                <div class="col s6">
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id='school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
-                    <ul id='dropdown1' class='dropdown-content'>
-                        <li><a href="#" onclick="changeCollege('school','Hunter College')">Hunter College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','City College')">City College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','Baruch College')">Baruch College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','Brooklyn College')">Brooklyn College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','Queens College')">Queens College</a></li>
-                    </ul>
-                </div>
-                <div class="col s6">
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
-                    <ul id='dropdown2' class='dropdown-content'>
-                        <li><a href="#" onclick="changeDropdownText('semester','Fall 2017')">Fall 2017</a></li>
-                        <li><a href="#" onclick="changeDropdownText('semester','Summer 2017')">Summer 2017</a></li>
-                        <li><a href="#" onclick="changeDropdownText('semester','Spring 2018')">Spring 2018</a></li>
-                    </ul>
-                </div>
-            </div>
-            <br />
-            </div class = "row">
-
-
-            <div class="col s6">
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown3' data-hover="true" id='classes' data-belowOrigin='true' >What course are you looking for?</a>
-                    <ul id='dropdown3' class='dropdown-content'>
-                        <!--<li><a href="#" onclick="changeDropdownText('classes','MATH')">MATH</a></li>
-                        <li><a href="#" onclick="changeDropdownText('classes','STAT')">STAT</a></li>-->
-                    </ul>
-                </div></br>
-                <div class="col s6">
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown4' data-hover="true" id='courseNumber' data-belowOrigin='true'>What course number are you looking for?</a>
-                    <ul id='dropdown4' class='dropdown-content'>
-                        <li><a href="#" onclick="changeDropdownText('courseNumber','101')">101</a></li>
-                        <li><a href="#" onclick="changeDropdownText('courseNumber','102')">102</a></li>
-                        <li><a href="#" onclick="changeDropdownText('courseNumber','201')">201</a></li>
-                        <li><a href="#" onclick="changeDropdownText('courseNumber','202')">202</a></li>
-                        <li><a href="#" onclick="changeDropdownText('courseNumber','202')">250</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <input id="teacher" type="text" class="validate" />
-                    <label for="teacher">Teacher's name</label>
-                </div>
-            </div>
-            <div class="row">
-                <center>
-                    <button class="btn waves-effect waves-light" type="submit" name="action" onclick="addItem();">Search for professors  <i class="material-icons right">search</i> </button>
-                </center>
-                <!--<div class="col s12">This div is 12-columns wide</div>-->
-            </div>
-        </div>
-    </center>
-    <!--<button onclick = "addItem();"> Search For Profesor </button>-->
-
-    <!--  Scripts-->
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="js/materialize.js"></script>
-    <script src="js/init.js"></script>
-    <footer class="page-footer orange">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would
-                        help support and continue development on this project and is greatly appreciated.</p>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Settings</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright">
+        </nav>
+        <br />
+        <center>
             <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                <div class="row">
+                    <h1 class="blue-text lighten-5">Select your school and year</h1>
+                </div>
+                <div class="row">
+                    <div class="col s6">
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id='school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
+                        <ul id='dropdown1' class='dropdown-content'>
+                            <li><a href="#" onclick="changeCollege('school','Hunter College')">Hunter College</a></li>
+                            <li><a href="#" onclick="changeCollege('school','City College')">City College</a></li>
+                            <li><a href="#" onclick="changeCollege('school','Baruch College')">Baruch College</a></li>
+                            <li><a href="#" onclick="changeCollege('school','Brooklyn College')">Brooklyn College</a></li>
+                            <li><a href="#" onclick="changeCollege('school','Queens College')">Queens College</a></li>
+                        </ul>
+                    </div>
+                    <div class="col s6">
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
+                        <ul id='dropdown2' class='dropdown-content'>
+                            <li><a href="#" onclick="changeDropdownText('semester','Fall 2017')">Fall 2017</a></li>
+                            <li><a href="#" onclick="changeDropdownText('semester','Summer 2017')">Summer 2017</a></li>
+                            <li><a href="#" onclick="changeDropdownText('semester','Spring 2018')">Spring 2018</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <br />
+                    <div class="row">
+                        <form action="/action_page.php" method="post">
+                          <label for="Course">Course Name</label>
+                            <input id = "Course" type="text" name="coursename" placeholder="Course" class="validate">
+                            <br>
+                    
+                    <!--<div class="col s6">
+                        <a class='dropdown-button btn' href='#' data-activates='dropdown3' data-hover="true" id='classes' data-belowOrigin='true' >What course are you looking for?</a>
+                        <ul id='dropdown3' class='dropdown-content'>
+                            <li><a href="#" onclick="changeDropdownText('classes','MATH')">MATH</a></li>
+                            <li><a href="#" onclick="changeDropdownText('classes','STAT')">STAT</a></li>
+                        </ul>
+                        </div></br>-->
+                    <input placeholder="placeholder" type="int" name="coursenumber" value="Number" class="validate">
+                    <br><br>
+                    <input class="btn waves-effect waves-light" type="submit" value="Submit"></input>
+                    </form></br>
+                    <h2 class="blue-text lighten-5">Advance Searches</h2>
+               <hr></hr> 
+                <div class="row">
+                    <h5 class="blue-text lighten-5">Days You want the classes to be on</h5>
+                    <form>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box"/>
+                            <label for="filled-in-box">Monday</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box2"/>
+                            <label for="filled-in-box2">Tuesday</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box3"/>
+                            <label for="filled-in-box3">Wednesday</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box4"/>
+                            <label for="filled-in-box4">Thursday</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box5"/>
+                            <label for="filled-in-box5">Friday</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box6"/>
+                            <label for="filled-in-box6">Saturday</label>
+                        </p>
+                        <p>
+                            <input type="checkbox" class="filled-in" id="filled-in-box7"/>
+                            <label for="filled-in-box7">Sunday</label>
+                        </p>
+                 </form>
+                    <div class="input-field col s12">
+                        <input id="teacher" type="text" class="validate" />
+                        <label for="teacher">Teacher's name</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <center>
+                        <button class="btn waves-effect waves-light" type="submit" name="action" onclick="addItem();">Search for professors  <i class="material-icons right">search</i> </button>
+                    </center>
+                    <!--<div class="col s12">This div is 12-columns wide</div>-->
+                </div>
             </div>
-        </div>
-    </footer>
-</body>
-
+        </center>
+        <!--<button onclick = "addItem();"> Search For Profesor </button>-->
+        <!--  Scripts-->
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="js/materialize.js"></script>
+        <script src="js/init.js"></script>
+        <footer class="page-footer orange">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                        <h5 class="white-text">Company Bio</h5>
+                        <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would
+                            help support and continue development on this project and is greatly appreciated.
+                        </p>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Settings</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Link 1</a></li>
+                            <li><a class="white-text" href="#!">Link 2</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                    <div class="col l3 s12">
+                        <h5 class="white-text">Connect</h5>
+                        <ul>
+                            <li><a class="white-text" href="#!">Link 1</a></li>
+                            <li><a class="white-text" href="#!">Link 2</a></li>
+                            <li><a class="white-text" href="#!">Link 3</a></li>
+                            <li><a class="white-text" href="#!">Link 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-copyright">
+                <div class="container">
+                    Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                </div>
+            </div>
+        </footer>
+    </body>
 </html>
 </body>
-
 </html>
