@@ -16,16 +16,16 @@
             min-height: 100vh;
             flex-direction: column;
         }
-
         main {
             flex: 1 0 auto;
         }
     </style>
     <script>
         function intialize() {
-            $(document).ready(function () {
+            $(document).ready(function() {
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                 $('#modal1').modal();
+                $('select').material_select();
             });
             // input = document.getElementById("teacher");
             // startingList = document.getElementById("grocerylist");
@@ -124,10 +124,12 @@
         <div class="nav-wrapper container">
             <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Classes</a></li>
+                <li><a href="#">Classes</a>
+                </li>
             </ul>
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Classes</a></li>
+                <li><a href="#">Classes</a>
+                </li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
@@ -139,51 +141,48 @@
                 <h1 class="blue-text lighten-5">Select your school and year</h1>
             </div>
             <div class="row">
-                <div class="col s6">
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown1' data-hover="true" id='school' data-belowOrigin='true'>Which CUNY are you enrolling in?</a>
-                    <ul id='dropdown1' class='dropdown-content'>
-                        <li><a href="#" onclick="changeCollege('school','Hunter College')">Hunter College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','City College')">City College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','Baruch College')">Baruch College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','Brooklyn College')">Brooklyn College</a></li>
-                        <li><a href="#" onclick="changeCollege('school','Queens College')">Queens College</a></li>
-                    </ul>
+                
+                <div class="input-field col s4">
+                    <select>
+                        <option value="" disabled selected>Which School are you Attending?</option>
+                        <option value="1">Hunter College</option>
+                        <option value="2">Baruch College</option>
+                        <option value="3">City College</option>
+                        <option value="4">Queens College</option>
+                        <option value="5">Brooklyn College</option>
+                    </select>
+                    <label>School</label>
                 </div>
-                <div class="col s6">
-                    <a class='dropdown-button btn' href='#' data-activates='dropdown2' data-hover="true" id='semester' data-belowOrigin='true'>What term are you enrolling in?</a>
-                    <ul id='dropdown2' class='dropdown-content'>
-                        <li><a href="#" onclick="changeDropdownText('semester','Fall 2017')">Fall 2017</a></li>
-                        <li><a href="#" onclick="changeDropdownText('semester','Summer 2017')">Summer 2017</a></li>
-                        <li><a href="#" onclick="changeDropdownText('semester','Spring 2018')">Spring 2018</a></li>
-                    </ul>
+                <div class="input-field offset-s4 col s4">
+                    <select>
+                        <option value="" disabled selected>Which term are you attending?</option>
+                        <option value="1">Summer 2017</option>
+                        <option value="2">Fall 2017</option>
+                        <option value="3">Spring 2018</option>
+                    </select>
+                    <label>Term</label>
                 </div>
             </div>
             <br />
             <div class="row">
                 <form action="/action_page.php" method="post">
-                    <label for="Course">Course Name</label>
-                    <input id="Course" type="text" name="coursename" placeholder="Course" class="validate">
-                    <br>
-
-                    <!--<div class="col s6">
-                        <a class='dropdown-button btn' href='#' data-activates='dropdown3' data-hover="true" id='classes' data-belowOrigin='true' >What course are you looking for?</a>
-                        <ul id='dropdown3' class='dropdown-content'>
-                            <li><a href="#" onclick="changeDropdownText('classes','MATH')">MATH</a></li>
-                            <li><a href="#" onclick="changeDropdownText('classes','STAT')">STAT</a></li>
-                        </ul>
-                        </div></br>-->
+                    <div class="input-field col s4">
+                        <select disabled>
+                            <option value="" disabled selected>Course code</option>
+                        </select>
+                    </div>
 
                     <!--Change to Dropdown-->
-                    <input placeholder="placeholder" type="int" name="coursenumber" value="Number" class="validate">
-                    <br><br>
-                    <input class="btn waves-effect waves-light" type="submit" value="Submit"></input>
-                </form>
-                </br>
-
-                <div class="row">
-
+                    <div class="input-field offset-s4 col s4">
+                        <select disabled>
+                            <option value="" disabled selected>Which course?</option>
+                        </select>
+                    </div>
+                    <br>
+                    <br>
+                    <input class="btn waves-effect waves-light col s4" type="submit" value="Submit"></input>
                     <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn" href="#modal1">Advance Searches</a>
+                    <a class="waves-effect waves-light btn offset-s4 col s4" href="#modal1">Advanced Search</a>
 
                     <!-- Modal Structure -->
                     <div id="modal1" class="modal bottom-sheet">
@@ -234,15 +233,12 @@
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <center>
-                        <button class="btn waves-effect waves-light" type="submit" name="action" onclick="addItem();">Search for professors  <i class="material-icons right">search</i> </button>
-                    </center>
-                    <!--<div class="col s12">This div is 12-columns wide</div>-->
-                </div>
+                </form>
+                </br>
             </div>
         </div>
+        </div>
+        
     </center>
     <!--<button onclick = "addItem();"> Search For Profesor </button>-->
     <!--  Scripts-->
@@ -254,26 +250,33 @@
             <div class="row">
                 <div class="col l6 s12">
                     <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would
-                        help support and continue development on this project and is greatly appreciated.
+                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
                     </p>
                 </div>
                 <div class="col l3 s12">
                     <h5 class="white-text">Settings</h5>
                     <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
+                        <li><a class="white-text" href="#!">Link 1</a>
+                        </li>
+                        <li><a class="white-text" href="#!">Link 2</a>
+                        </li>
+                        <li><a class="white-text" href="#!">Link 3</a>
+                        </li>
+                        <li><a class="white-text" href="#!">Link 4</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="col l3 s12">
                     <h5 class="white-text">Connect</h5>
                     <ul>
-                        <li><a class="white-text" href="#!">Link 1</a></li>
-                        <li><a class="white-text" href="#!">Link 2</a></li>
-                        <li><a class="white-text" href="#!">Link 3</a></li>
-                        <li><a class="white-text" href="#!">Link 4</a></li>
+                        <li><a class="white-text" href="#!">Link 1</a>
+                        </li>
+                        <li><a class="white-text" href="#!">Link 2</a>
+                        </li>
+                        <li><a class="white-text" href="#!">Link 3</a>
+                        </li>
+                        <li><a class="white-text" href="#!">Link 4</a>
+                        </li>
                     </ul>
                 </div>
             </div>
