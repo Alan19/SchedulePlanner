@@ -10,16 +10,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-    <style>
-        body {
-            display: flex;
-            min-height: 100vh;
-            flex-direction: column;
-        }
-        main {
-            flex: 1 0 auto;
-        }
-    </style>
+    <style></style>
     <script>
         function intialize() {
             $(document).ready(function() {
@@ -135,154 +126,117 @@
         </div>
     </nav>
     <br />
-    <center>
-        <div class="container">
-            <div class="row">
-                <h1 class="blue-text lighten-5">Select your school and year</h1>
-            </div>
-            <div class="row">
-
-                <div class="input-field col s4">
-                    <select>
-                        <option value="" disabled selected>Which School are you Attending?</option>
-                        <option value="1">Hunter College</option>
-                        <option value="2">Baruch College</option>
-                        <option value="3">City College</option>
-                        <option value="4">Queens College</option>
-                        <option value="5">Brooklyn College</option>
-                    </select>
-                    <label>School</label>
+    <main>
+        <center>
+            <div class="container">
+                <div class="row">
+                    <h1 class="blue-text lighten-5">Select your school and year</h1>
                 </div>
-                <div class="input-field offset-s4 col s4">
-                    <select>
-                        <option value="" disabled selected>Which term are you attending?</option>
-                        <option value="1">Summer 2017</option>
-                        <option value="2">Fall 2017</option>
-                        <option value="3">Spring 2018</option>
-                    </select>
-                    <label>Term</label>
-                </div>
-            </div>
-            <br />
-            <div class="row">
-                <form action="/action_page.php" method="post">
+                <div class="row">
                     <div class="input-field col s4">
-                        <select disabled>
-                            <option value="" disabled selected>Course code</option>
+                        <select>
+                            <option value="" disabled selected>Which School are you Attending?</option>
+                            <option value="1">Hunter College</option>
+                            <option value="2">Baruch College</option>
+                            <option value="3">City College</option>
+                            <option value="4">Queens College</option>
+                            <option value="5">Brooklyn College</option>
                         </select>
+                        <label>School</label>
                     </div>
-
-                    <!--Change to Dropdown-->
                     <div class="input-field offset-s4 col s4">
-                        <select disabled>
-                            <option value="" disabled selected>Which course?</option>
+                        <select>
+                            <option value="" disabled selected>Which term are you attending?</option>
+                            <option value="1">Summer 2017</option>
+                            <option value="2">Fall 2017</option>
+                            <option value="3">Spring 2018</option>
                         </select>
+                        <label>Term</label>
                     </div>
-                    <br>
-                    <br>
-                    <input class="btn waves-effect waves-light col s4" type="submit" value="Submit"></input>
-                    <!-- Modal Trigger -->
-                    <a class="waves-effect waves-light btn offset-s4 col s4" href="#modal1">Advanced Search</a>
-
-                    <!-- Modal Structure -->
-                    <div id="modal1" class="modal bottom-sheet">
-                        <div class="modal-content">
-                            <div class="container">
-                                <div class="row">
-                                    <h5 class="blue-text lighten-5">Days You want the classes to be on</h5>
-                                    <form>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box" />
-                                            <label for="filled-in-box">Monday</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box2" />
-                                            <label for="filled-in-box2">Tuesday</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box3" />
-                                            <label for="filled-in-box3">Wednesday</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box4" />
-                                            <label for="filled-in-box4">Thursday</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box5" />
-                                            <label for="filled-in-box5">Friday</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box6" />
-                                            <label for="filled-in-box6">Saturday</label>
-                                        </p>
-                                        <p>
-                                            <input type="checkbox" class="filled-in" id="filled-in-box7" />
-                                            <label for="filled-in-box7">Sunday</label>
-                                        </p>
-                                    </form>
-                                </div>
-                                <div class="row">
-                                    <div class="input-field">
-                                        <input id="teacher" type="text" class="validate" />
-                                        <label for="teacher">Teacher's name</label>
+                </div>
+                <br />
+                <div class="row">
+                    <form action="/action_page.php" method="post">
+                        <div class="input-field col s4">
+                            <select disabled>
+                                <option value="" disabled selected>Course code</option>
+                            </select>
+                        </div>
+                        <!--Change to Dropdown-->
+                        <div class="input-field offset-s4 col s4">
+                            <select disabled>
+                                <option value="" disabled selected>Which course?</option>
+                            </select>
+                        </div>
+                        <br>
+                        <br>
+                        <input class="btn waves-effect waves-light col s4" type="submit" value="Submit"></input>
+                        <!-- Modal Trigger -->
+                        <a class="waves-effect waves-light btn offset-s4 col s4" href="#modal1">Advanced Search</a>
+                        <!-- Modal Structure -->
+                        <div id="modal1" class="modal bottom-sheet">
+                            <div class="modal-content">
+                                <div class="container">
+                                    <div class="row">
+                                        <h5 class="blue-text lighten-5">Days You want the classes to be on</h5>
+                                        <form>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box" />
+                                                <label for="filled-in-box">Monday</label>
+                                            </p>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box2" />
+                                                <label for="filled-in-box2">Tuesday</label>
+                                            </p>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box3" />
+                                                <label for="filled-in-box3">Wednesday</label>
+                                            </p>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box4" />
+                                                <label for="filled-in-box4">Thursday</label>
+                                            </p>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box5" />
+                                                <label for="filled-in-box5">Friday</label>
+                                            </p>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box6" />
+                                                <label for="filled-in-box6">Saturday</label>
+                                            </p>
+                                            <p>
+                                                <input type="checkbox" class="filled-in" id="filled-in-box7" />
+                                                <label for="filled-in-box7">Sunday</label>
+                                            </p>
+                                        </form>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field">
+                                            <input id="teacher" type="text" class="validate" />
+                                            <label for="teacher">Teacher's name</label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="modal-footer">
-                                <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Confirm</a>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Confirm</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-                </br>
+                    </form>
+                    </br>
+                </div>
             </div>
-        </div>
-
-    </center>
+        </center>
+    </main>
     <!--<button onclick = "addItem();"> Search For Profesor </button>-->
     <!--  Scripts-->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-    <footer class="page-footer orange">
-        <div class="container">
-            <div class="row">
-                <div class="col l6 s12">
-                    <h5 class="white-text">Company Bio</h5>
-                    <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.
-                    </p>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Settings</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a>
-                        </li>
-                        <li><a class="white-text" href="#!">Link 2</a>
-                        </li>
-                        <li><a class="white-text" href="#!">Link 3</a>
-                        </li>
-                        <li><a class="white-text" href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col l3 s12">
-                    <h5 class="white-text">Connect</h5>
-                    <ul>
-                        <li><a class="white-text" href="#!">Link 1</a>
-                        </li>
-                        <li><a class="white-text" href="#!">Link 2</a>
-                        </li>
-                        <li><a class="white-text" href="#!">Link 3</a>
-                        </li>
-                        <li><a class="white-text" href="#!">Link 4</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+    <footer class="page-footer light-blue darken-1">
         <div class="footer-copyright">
             <div class="container">
-                Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+                Made by <a class="blue-text text-lighten-3" href="http://materializecss.com">Materialize</a> and the <a class="blue-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a>
             </div>
         </div>
     </footer>
