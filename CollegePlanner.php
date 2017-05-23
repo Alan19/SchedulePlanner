@@ -107,20 +107,24 @@
             // alert("College set");
             populate(college);
         }
+        function unlockCourses(){
+            //Have function reveal the other forms
+            // console.log("Unlocked!");
+            //     $("#codeSelect").prop("disabled", false);
+            // console.log("Done");
+        }
     </script>
 </head>
 
 <body onload="intialize();" background="">
     <nav class="light-blue lighten-1" role="navigation">
         <div class="nav-wrapper container">
-            <a id="logo-container" href="#" class="brand-logo">Schedule Planner</a>
+            <a id="logo-container" href="index.html" class="brand-logo">Schedule Planner</a>
             <ul class="right hide-on-med-and-down">
-                <li><a href="#">Classes</a>
-                </li>
+                <li><a href="classes.php">Classes</a></li>
             </ul>
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Classes</a>
-                </li>
+                <li><a href="classes.php">Classes<i class="large material-icons">schedule</i></a></li>
             </ul>
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
@@ -134,7 +138,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <select>
+                        <select onchange="unlockCourses()">
                             <option value="" disabled selected>Which School are you Attending?</option>
                             <option value="1">Hunter College</option>
                             <option value="2">Baruch College</option>
@@ -158,8 +162,9 @@
                 <div class="row">
                     <form action="/action_page.php" method="post">
                         <div class="input-field col s4">
-                            <select disabled>
+                            <select disabled="disabled" id="codeSelect">
                                 <option value="" disabled selected>Course code</option>
+                                <!--<option value="1">ENG</option>-->
                             </select>
                         </div>
                         <!--Change to Dropdown-->
