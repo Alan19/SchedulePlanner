@@ -38,9 +38,33 @@
                             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
                         </div>
                     </li>
-                    <li><a href="CollegePlanner.php">Home<i class="large material-icons">home</i></a></li>
+                    <!--<li><a href="CollegePlanner.php">Home<i class="large material-icons">home</i></a></li>
                     <li><a href="CollegePlanner.php">Courses<i class="large material-icons">class</i></a></li>
-                    <li><a href="classes.php">Schedule<i class="large material-icons">schedule</i></a></li>
+                    <li><a href="classes.php">Schedule<i class="large material-icons">schedule</i></a></li>-->
+                    <li>
+                        <div class="card light-green">
+                            <div class="card-content white-text">
+                                <br><span class="card-title"><i class="material-icons" style="font-size: 80px">home</i></span>
+                                <a href="index.html"><h2>Home</h2></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card amber">
+                            <div class="card-content white-text">
+                                <br><span class="card-title"><i class="material-icons" style="font-size: 80px">class</i></span>
+                                <a href="CollegePlanner.php"><h2>Courses</h2></a>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="card cyan">
+                            <div class="card-content white-text">
+                                <br><span class="card-title"><i class="material-icons" style="font-size: 80px">schedule</i></span>
+                                <a href="classes.php"><h2>Schedule</h2></a>
+                            </div>
+                        </div>
+                    </li>
                 </ul>
                
             </div>
