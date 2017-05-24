@@ -54,7 +54,7 @@
     <footer class="page-footer light-blue darken-1">
         <div class="footer-copyright">
             <div class="container">
-                Made by <a class="blue-text text-lighten-3" href="http://materializecss.com">Materialize</a> and the <a class="blue-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a>
+                Made by the <a class="blue-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="blue-text text-lighten-3" href="http://materializecss.com">Materialize</a> 
             </div>
         </div>
     </footer>
