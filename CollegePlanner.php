@@ -17,6 +17,9 @@
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                 $('#modal1').modal();
                 $('select').material_select();
+                $('.carousel').carousel();
+                // $('.carousel').carousel({fullWidth: true});
+
             });
             // input = document.getElementById("teacher");
             // startingList = document.getElementById("grocerylist");
@@ -58,6 +61,12 @@
         }
 
         function checkTheClasses() {
+
+        }
+
+        function changeCarousel(){
+            schoolIndex = $('#schoolPick').val()-1;
+            $('.carousel').carousel('set', schoolIndex);
 
         }
 
@@ -107,16 +116,14 @@
             // alert("College set");
             populate(college);
         }
-        function unlockCourses(){
-            //Have function reveal the other forms
-            // console.log("Unlocked!");
-            //     $("#codeSelect").prop("disabled", false);
-            // console.log("Done");
+        function verifyCourses(){
+            if($('#courseSelect').val()==null && $('#codeSelect').val()==null) 
+                Materialize.toast('Please fill out all forms to add course', 10000)
         }
     </script>
 </head>
 
-<body onload="intialize();" background="">
+<body onload="intialize();">
     <header>
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container">
@@ -171,11 +178,11 @@
         <center>
             <div class="container">
                 <div class="row">
-                    <h1 class="blue-text lighten-5">Select your school and year</h1>
+                    <h1 class="blue-text lighten-1">Select your school and year</h1>
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <select onchange="unlockCourses()">
+                        <select id="schoolPick" onchange="changeCarousel()">
                             <option value="" disabled selected>Which School are you Attending?</option>
                             <option value="1">Hunter College</option>
                             <option value="2">Baruch College</option>
@@ -195,24 +202,23 @@
                         <label>Term</label>
                     </div>
                 </div>
-                <br />
                 <div class="row">
-                    <form action="/action_page.php" method="post">
+                    <form action="classes.php" method="post">
                         <div class="input-field col s4">
-                            <select disabled="disabled" id="codeSelect">
+                            <select id="codeSelect">
                                 <option value="" disabled selected>Course code</option>
                                 <!--<option value="1">ENG</option>-->
                             </select>
                         </div>
                         <!--Change to Dropdown-->
                         <div class="input-field offset-s4 col s4">
-                            <select disabled>
+                            <select id="courseSelect">
                                 <option value="" disabled selected>Which course?</option>
                             </select>
                         </div>
                         <br>
                         <br>
-                        <input class="btn waves-effect waves-light col s4" type="submit" value="Submit"></input>
+                        <input class="btn waves-effect waves-light col s4" onclick="verifyCourses()" type="submit" value="Submit"></input>
                         <!-- Modal Trigger -->
                         <a class="waves-effect waves-light btn offset-s4 col s4" href="#modal1">Advanced Search</a>
                         <!-- Modal Structure -->
@@ -267,6 +273,13 @@
                     </form>
                     </br>
                 </div>
+                <div class="carousel">
+                    <a class="carousel-item"><img src="http://www.hunter.cuny.edu/research/repository/images/hunter_campus1.jpg/image_preview"></a>
+                    <a class="carousel-item"><img src="https://www.baruch.cuny.edu/undergrad/images/VerticalCampus2_002.jpg"></a>
+                    <a class="carousel-item"><img src="https://static01.nyt.com/images/2016/08/30/nyregion/30CUNY3/30CUNY2-1472516337388-master768.jpg"></a>
+                    <a class="carousel-item"><img src="http://www2.cuny.edu/wp-content/uploads/sites/4/2015/01/09_14_2004_qcc_campus_05.jpg"></a>
+                    <a class="carousel-item"><img src="http://www.brooklyn.cuny.edu/web/com_campus_exteriors/111121_CampusExterior_738x330_001.jpg"></a>
+                </div>
             </div>
         </center>
     </main>
@@ -275,10 +288,10 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
-    <footer class="page-footer light-blue darken-1">
+    <footer class="page-footer green darken-1">
         <div class="footer-copyright">
             <div class="container">
-                Made by the <a class="blue-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="blue-text text-lighten-3" href="http://materializecss.com">Materialize</a> 
+                Made by the <a class="green-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a> 
             </div>
         </div>
     </footer>

@@ -72,7 +72,18 @@
     </header>
     <main>
         <div class="container">
-            <table class="bordered responsive-table"></table>
+            <h1 class="blue-text lighten-1 center">Planner</h1>
+            <table class="bordered responsive-table">
+                <tr>
+                    <td>Monday</td>
+                    <td>Tuesday</td>
+                    <td>Wednesday</td>
+                    <td>Thursday</td>
+                    <td>Friday</td>
+                    <td>Saturday</td>
+                    <td>Sunday</td>
+                </tr>
+            </table>
         </div>
     </main>
     <footer class="page-footer light-blue darken-1">
