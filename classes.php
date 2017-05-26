@@ -12,6 +12,9 @@
     <script>
         function initialize(){
             courses = [new Course('English 101', 'English'), new Course('Calculus 101', 'Math')];
+            <?php
+                echo $_POST;
+            ?>
         }
         function Course(name, subject){
             this.name = name;

@@ -12,23 +12,16 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <style></style>
     <script>
+        classCart = [];
+
         function intialize() {
             $(document).ready(function() {
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                 $('#modal1').modal();
                 $('select').material_select();
                 $('.carousel').carousel();
-                // $('.carousel').carousel({fullWidth: true});
 
             });
-            // input = document.getElementById("teacher");
-            // startingList = document.getElementById("grocerylist");
-            // input2 = document.getElementById("whichitem");
-            // newList = [];
-            // startingList.innerHTML = newList;
-
-
-            // var select = document.getElementById("selectNumber"); 
             hunterClasses = ["ACC", "ACSK", "ADSUP", "ANTH", "ANTHC", "ABTHP,", "ARB", "ARTCR", "ARTH", "ARTLA",
                 "ASAIN", "ASTRO",
                 "BIOCH", "BIOL", "CEDC", "CEDF", "CHEM", "CHIN", "CHND", "CLA", "COCO", "COMPL", "COMSC", "COUNM",
@@ -60,12 +53,8 @@
             $("#" + dropdownID).width(originalWidth);
         }
 
-        function checkTheClasses() {
-
-        }
-
-        function changeCarousel(){
-            schoolIndex = $('#schoolPick').val()-1;
+        function changeCarousel() {
+            schoolIndex = $('#schoolPick').val() - 1;
             $('.carousel').carousel('set', schoolIndex);
 
         }
@@ -116,9 +105,25 @@
             // alert("College set");
             populate(college);
         }
-        function verifyCourses(){
-            if($('#courseSelect').val()==null && $('#codeSelect').val()==null) 
+
+        function verifyCourses() {
+            if ($('#courseSelect').val() == null || $('#codeSelect').val() == null) {
                 Materialize.toast('Please fill out all forms to add course', 10000)
+                return false;
+            } else {
+                Materialize.toast('Course Added!', 10000)
+                classCart.push(new Course($('#codeSelect').val(), $('#courseSelect').val()));
+                return false;
+            }
+        }
+
+        function Course(name, subject) {
+            this.name = name;
+            this.subject = subject;
+        }
+
+        function submitClasses(){
+            
         }
     </script>
 </head>
@@ -129,21 +134,21 @@
             <div class="nav-wrapper container">
                 <a id="logo-container" href="index.html" class="brand-logo left">Schedule Planner</a>
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#" data-activates="nav-mobile" class="show-on-large button-collapse"><i class="material-icons">menu</i></a></li>
-                    <li><a href="classes.php">Classes</a></li>
+                    <li><a href="#" data-activates="nav-mobile" class="show-on-large button-collapse"><i class="material-icons">menu</i></a>
+                    </li>
+                    <li><a href="classes.php" onclick="submitClasses()">Classes</a>
+                    </li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
                     <li>
                         <div class="userView">
                             <div class="background"></div>
-                            <a href="#!user"><img class="circle" src="resources\student1.png"></a>
+                            <a href="#!user"><img class="circle" src="resources\student1.png">
+                            </a>
                             <a href="#!name"><span class="white-text name">John Doe</span></a>
                             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
                         </div>
                     </li>
-                    <!--<li><a href="CollegePlanner.php">Home<i class="large material-icons">home</i></a></li>
-                    <li><a href="CollegePlanner.php">Courses<i class="large material-icons">class</i></a></li>
-                    <li><a href="classes.php">Schedule<i class="large material-icons">schedule</i></a></li>-->
                     <li>
                         <div class="card light-green">
                             <div class="card-content white-text">
@@ -169,7 +174,7 @@
                         </div>
                     </li>
                 </ul>
-               
+
             </div>
         </nav>
     </header>
@@ -203,10 +208,11 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="classes.php" method="post">
+                    <form action="classes.php" onsubmit="return verifyCourses()" method="post">
                         <div class="input-field col s4">
                             <select id="codeSelect">
                                 <option value="" disabled selected>Course code</option>
+                                <option value="MATH">MATH</option>
                                 <!--<option value="1">ENG</option>-->
                             </select>
                         </div>
@@ -214,11 +220,15 @@
                         <div class="input-field offset-s4 col s4">
                             <select id="courseSelect">
                                 <option value="" disabled selected>Which course?</option>
+                                <option value="Calculus 1">Calculus 1</option>
+                                <option value="Calculus 2">Calculus 2</option>
                             </select>
                         </div>
                         <br>
                         <br>
-                        <input class="btn waves-effect waves-light col s4" onclick="verifyCourses()" type="submit" value="Submit"></input>
+                        <button class="btn waves-effect waves-light col s4" type="submit" value="Submit" name="action">
+                            Submit<i class="material-icons right">send</i>
+                        </button>
                         <!-- Modal Trigger -->
                         <a class="waves-effect waves-light btn offset-s4 col s4" href="#modal1">Advanced Search</a>
                         <!-- Modal Structure -->
@@ -274,11 +284,16 @@
                     </br>
                 </div>
                 <div class="carousel">
-                    <a class="carousel-item"><img src="http://www.hunter.cuny.edu/research/repository/images/hunter_campus1.jpg/image_preview"></a>
-                    <a class="carousel-item"><img src="https://www.baruch.cuny.edu/undergrad/images/VerticalCampus2_002.jpg"></a>
-                    <a class="carousel-item"><img src="https://static01.nyt.com/images/2016/08/30/nyregion/30CUNY3/30CUNY2-1472516337388-master768.jpg"></a>
-                    <a class="carousel-item"><img src="http://www2.cuny.edu/wp-content/uploads/sites/4/2015/01/09_14_2004_qcc_campus_05.jpg"></a>
-                    <a class="carousel-item"><img src="http://www.brooklyn.cuny.edu/web/com_campus_exteriors/111121_CampusExterior_738x330_001.jpg"></a>
+                    <a class="carousel-item"><img src="http://www.hunter.cuny.edu/research/repository/images/hunter_campus1.jpg/image_preview">
+                    </a>
+                    <a class="carousel-item"><img src="https://www.baruch.cuny.edu/undergrad/images/VerticalCampus2_002.jpg">
+                    </a>
+                    <a class="carousel-item"><img src="https://static01.nyt.com/images/2016/08/30/nyregion/30CUNY3/30CUNY2-1472516337388-master768.jpg">
+                    </a>
+                    <a class="carousel-item"><img src="http://www2.cuny.edu/wp-content/uploads/sites/4/2015/01/09_14_2004_qcc_campus_05.jpg">
+                    </a>
+                    <a class="carousel-item"><img src="http://www.brooklyn.cuny.edu/web/com_campus_exteriors/111121_CampusExterior_738x330_001.jpg">
+                    </a>
                 </div>
             </div>
         </center>
@@ -291,7 +306,7 @@
     <footer class="page-footer green darken-1">
         <div class="footer-copyright">
             <div class="container">
-                Made by the <a class="green-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a> 
+                Made by the <a class="green-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a>
             </div>
         </div>
     </footer>
