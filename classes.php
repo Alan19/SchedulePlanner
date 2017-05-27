@@ -19,17 +19,21 @@
             this.subject = subject;
         }
         function populate(){
+            scheduleTable = document.getElementById('schedule-table');
             for(i = 0; i<7; i++){
-                firstClass = $("#schedule-table").append('<tr></tr>');
-                for(j = 0; j<firstClass.length;j++){
-                    firstClass.append(
-                        `<td><div class="card ${classCart[j].color+' darken-1'}">
+                row = scheduleTable.insertRow(i+1);
+                row.insertCell(0);
+                row.innerHTML = i + "th Period"
+                for(j = 1; j<scheduleTable.rows[0].cells.length;j++){
+                    cell = row.insertCell(0);
+                    cell.innerHTML=
+                        `<td><div class="card ${classCart[0].color+' darken-1'}">
                             <div class="card-content white-text small">
-                                <br><span class="card-title">${classCart[j].name}</span>
-                                ${classCart[j].subject}</a>
+                                <br><span class="card-title">${classCart[0].name}</span>
+                                ${classCart[0].subject}</a>
                             </div>
-                        </div></td`
-                    );
+                        </div></td>`
+                    ;
                 }
             }
         }
@@ -91,6 +95,7 @@
             <h1 class="blue-text lighten-1 center">Planner</h1>
             <table class="bordered responsive-table" id="schedule-table">
                 <tr>
+                    <td></td>
                     <td>Monday</td>
                     <td>Tuesday</td>
                     <td>Wednesday</td>
