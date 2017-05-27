@@ -14,13 +14,13 @@
     <script>
         classCart = [];
 
-        function intialize() {
+        function initialize() {
             $(document).ready(function() {
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                 $('#modal1').modal();
                 $('select').material_select();
                 $('.carousel').carousel();
-
+                classCart = JSON.parse(Cookies.get('courses'));
             });
             hunterClasses = ["ACC", "ACSK", "ADSUP", "ANTH", "ANTHC", "ABTHP,", "ARB", "ARTCR", "ARTH", "ARTLA",
                 "ASAIN", "ASTRO",
@@ -113,7 +113,8 @@
             } else {
                 Materialize.toast('Course Added!', 10000)
                 classCart.push(new Course($('#codeSelect').val(), $('#courseSelect').val()));
-                document.cookie = classCart[0].name;
+                Cookies.set('courses', JSON.stringify(classCart));
+
                 return false;
             }
         }
@@ -129,7 +130,7 @@
     </script>
 </head>
 
-<body onload="intialize();">
+<body onload="initialize();">
     <header>
         <nav class="light-blue lighten-1" role="navigation">
             <div class="nav-wrapper container">
@@ -209,7 +210,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form action="classes.php" onsubmit="return verifyCourses()" method="post">
+                    <form onsubmit="return verifyCourses()" method="post">
                         <div class="input-field col s4">
                             <select id="codeSelect">
                                 <option value="" disabled selected>Course code</option>
