@@ -113,6 +113,7 @@
             } else {
                 Materialize.toast('Course Added!', 10000)
                 classCart.push(new Course($('#codeSelect').val(), $('#courseSelect').val()));
+                document.cookie = classCart[0].name;
                 return false;
             }
         }
@@ -303,6 +304,7 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/js.cookie-2.1.4.min.js"></script>
     <footer class="page-footer green darken-1">
         <div class="footer-copyright">
             <div class="container">
