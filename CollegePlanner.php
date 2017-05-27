@@ -108,13 +108,12 @@
 
         function verifyCourses() {
             if ($('#courseSelect').val() == null || $('#codeSelect').val() == null) {
-                Materialize.toast('Please fill out all forms to add course', 10000)
+                Materialize.toast('Please fill out all forms to add course', 10000);
                 return false;
             } else {
                 Materialize.toast('Course Added!', 10000)
-                classCart.push(new Course($('#codeSelect').val(), $('#courseSelect').val()));
+                classCart.push(new Course($('#courseSelect').val(), $('#codeSelect').val()));
                 Cookies.set('courses', JSON.stringify(classCart));
-
                 return false;
             }
         }
@@ -122,6 +121,33 @@
         function Course(name, subject) {
             this.name = name;
             this.subject = subject;
+            this.time = "9 AM";
+            this.color = getSubjectColor(subject);
+        }
+
+        function getSubjectColor(subject){
+            switch(subject){
+                case "MATH":
+                case "FQUAN":
+                    return "blue";
+                    break;
+                case "ENGL":
+                    return "orange";
+                    break;
+                case "FIQWS":
+                    return "red";
+                    break;
+                case "BIO":
+                case "EAS":
+                    return "green";
+                    break;
+                case "CHEM":
+                    return "blue-grey";
+                    break;
+                default:
+                    return "white";
+                    break;
+            }
         }
 
         function submitClasses(){

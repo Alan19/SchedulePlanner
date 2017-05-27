@@ -11,14 +11,27 @@
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <script>
         function initialize(){
-            courses = [new Course('English 101', 'English'), new Course('Calculus 101', 'Math')];
-            // <?php
-            //     echo $_POST;
-            // ?>
+            classCart = JSON.parse(Cookies.get('courses'));
+            populate();
         }
         function Course(name, subject){
             this.name = name;
             this.subject = subject;
+        }
+        function populate(){
+            for(i = 0; i<7; i++){
+                firstClass = $("#schedule-table").append('<tr></tr>');
+                for(j = 0; j<firstClass.length;j++){
+                    firstClass.append(
+                        `<td><div class="card ${classCart[j].color+' darken-1'}">
+                            <div class="card-content white-text small">
+                                <br><span class="card-title">${classCart[j].name}</span>
+                                ${classCart[j].subject}</a>
+                            </div>
+                        </div></td`
+                    );
+                }
+            }
         }
     </script>
 </head>
@@ -76,7 +89,7 @@
     <main>
         <div class="container">
             <h1 class="blue-text lighten-1 center">Planner</h1>
-            <table class="bordered responsive-table">
+            <table class="bordered responsive-table" id="schedule-table">
                 <tr>
                     <td>Monday</td>
                     <td>Tuesday</td>
@@ -100,6 +113,7 @@
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
+    <script src="js/js.cookie-2.1.4.min.js"></script>
 </body>
 
 </html>
