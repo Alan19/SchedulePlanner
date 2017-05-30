@@ -20,6 +20,9 @@
                 $('#modal1').modal();
                 $('select').material_select();
                 $('.carousel').carousel();
+                if(Cookies.get('courses') == null){
+                    Cookies.set('courses', "");
+                }
                 classCart = JSON.parse(Cookies.get('courses'));
             });
             hunterClasses = ["ACC", "ACSK", "ADSUP", "ANTH", "ANTHC", "ABTHP,", "ARB", "ARTCR", "ARTH", "ARTLA",
