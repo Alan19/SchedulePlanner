@@ -1,0 +1,106 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+</style>
+<script>
+	function addToSelectedList(){
+		var unselectedList = document.getElementById("courses_unselected");
+		var selectedList = document.getElementById("selected_courses_list");
+
+
+		var x = getSelectedOption(unselectedList);
+		x.disabled = true;
+		// var xText = unselectedList.options[sel.selectedIndex].text;
+		var xText = x.text;
+		// alert(xText);
+
+		var entry = document.createElement('LI');
+		entry.id = x.value;
+		// entry.appendChild(document.createTextNode(firstname));
+		// entry.innerHTML = "" + x + " " + y + " " + z;
+		// entry.innerHTML = "hi";
+		entry.innerHTML = xText;
+
+		if(!selectedList.innerHTML.includes(xText)) {
+
+			document.getElementById('selected_courses_list').appendChild(entry);
+		}
+
+alert(selectedList.innerHTML);
+		updateSatisfiedRequirements(selectedList.innerHTML);
+
+
+	}
+
+	function getSelectedOption(sel) {
+        var opt;
+        for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+            opt = sel.options[i];
+            if ( opt.selected === true ) {
+                break;
+            }
+        }
+        return opt;
+    }
+
+	function listToString(str){
+		var outString = "";
+		while (str.indexOf("<li") > -1) {
+			var a = str.indexOf("<li") + 3;
+			str = str.substring(a);
+			a = str.indexOf(">") + 1;
+			var b = str.indexOf("</li>");
+			var c = b + 5;
+
+			outString = outString + str.substring(a, b) + "[]";
+			str = str.substring(c);
+		}
+		return outString;
+		// return "a";
+	}
+	function listToArray(str){
+		var arr = [];
+		while (str.indexOf("<li") > -1) {
+			var a = str.indexOf("<li") + 3;
+			str = str.substring(a);
+			a = str.indexOf(">") + 1;
+			var b = str.indexOf("</li>");
+			var c = b + 5;
+
+			arr.push(str.substring(a, b));
+			str = str.substring(c);
+		}
+
+		return arr;
+	}
+
+   	function updateSatisfiedRequirements(str) {
+		str = listToString(str);
+		// alert(str);
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("lulz").innerHTML = this.responseText;
+			}
+		};
+		xmlhttp.open("GET", "satisfied.php?q=" + str, true);
+		xmlhttp.send();
+    	}
+
+</script>
+</head>
+<body>
+
+	<select id = 'courses_unselected' onchange = "addToSelectedList()">
+		<!-- <select id = 'courses_unselected'> -->
+			<option  id = CORC1110 value = CORC1110>CORC 1110 Classical Cultures</option><option  id = CORC1120 value = CORC1120>CORC 1120 Introduction To Art</option><option  id = CORC1220 value = CORC1220>CORC 1220 Shaping Of The Modern World</option><option  id = CORC1311 value = CORC1311>CORC 1311 Thinking Mathematically</option><option  id = CORC1312 value = CORC1312>CORC 1312 Computing: Nature, Power, and Limits</option><option  id = CORC1321 value = CORC1321>CORC 1321 Biology for Today's World</option><option  id = CORC1322 value = CORC1322>CORC 1322 Science in Modern Life: Chemistry</option><option  id = CORC1331 value = CORC1331>CORC 1331 Physics: The Simple Laws That Govern the Universe</option><option  id = CORC1332 value = CORC1332>CORC 1332 Geology: The Science of Our World</option><option  id = CORC3101 value = CORC3101>CORC 3101 Literature, Ethnicity, and Immigration</option><option  id = CORC3102 value = CORC3102>CORC 3102 Ideas of Character in the Western Literary Tradition</option><option  id = CORC3103 value = CORC3103>CORC 3103 Italian American Literature and Film</option><option  id = CORC3104 value = CORC3104>CORC 3104 Literature and Film</option><option  id = CORC3105 value = CORC3105>CORC 3105 Philosophical Issues in Literature</option><option  id = CORC3106 value = CORC3106>CORC 3106 Text/Context: Special Topics</option><option  id = CORC3107 value = CORC3107>CORC 3107 The Emergence of the Modern</option><option  id = CORC3108 value = CORC3108>CORC 3108 The Quest for Ethnic, Cultural, and National Identities in Literature</option><option  id = CORC3109 value = CORC3109>CORC 3109 The Self and Society</option><option  id = CORC3110 value = CORC3110>CORC 3110 Literature of the African Diaspora</option><option  id = CORC3111 value = CORC3111>CORC 3111 Classical Jewish Texts Moving Toward Modernity</option><option  id = CORC3201 value = CORC3201>CORC 3201 Art and Archaeology of Late Period Egypt, 1070 B.C.-A.D. 642</option><option  id = CORC3202 value = CORC3202>CORC 3202 Classical Philosophies of India and China</option><option  id = CORC3203 value = CORC3203>CORC 3203 Latin@ Diasporas in the United States</option><option  id = CORC3204 value = CORC3204>CORC 3204 The Global Spanish-Speaking Community From Imperial Conquests to Latino Dia</option><option  id = CORC3205 value = CORC3205>CORC 3205 The Jewish Diaspora</option><option  id = CORC3206 value = CORC3206>CORC 3206 The Development of the Silk Road</option><option  id = CORC3207 value = CORC3207>CORC 3207 The Caribbeanization of North America</option><option  id = CORC3208 value = CORC3208>CORC 3208 Comparative Studies in Cultures and Transformation</option><option  id = CORC3209 value = CORC3209>CORC 3209 After Alexander A Confluence of Cultures</option><option  id = CORC3210 value = CORC3210>CORC 3210 Islamic Perspectives on Modernity, Politics, and Culture</option><option  id = CORC3211 value = CORC3211>CORC 3211 Black Political Identity in a Transnational Context</option><option  id = CORC3212 value = CORC3212>CORC 3212 Mathematics of Non-Western Civilizations</option><option  id = CORC3301 value = CORC3301>CORC 3301 Cosmology</option><option  id = CORC3302 value = CORC3302>CORC 3302 Energy Use and Climate Change</option><option  id = CORC3303 value = CORC3303>CORC 3303 Exploring Robotics</option><option  id = CORC3304 value = CORC3304>CORC 3304 Exploring the Earth System</option><option  id = CORC3305 value = CORC3305>CORC 3305 Exploring Scientific Issues Methodology, Theory, and Ethics in the Sciences</option><option  id = CORC3306 value = CORC3306>CORC 3306 Scientific Revolutions</option><option  id = CORC3307 value = CORC3307>CORC 3307 Studies in Forensic Science</option><option  id = CORC3308 value = CORC3308>CORC 3308 The Making of the Atomic Bomb</option><option  id = CORC3309 value = CORC3309>CORC 3309 Climate Change: Torn Between Myth and Fact</option><option  id = CORC3310 value = CORC3310>CORC 3310 Paradoxes of Reason</option><option  id = CORC3311 value = CORC3311>CORC 3311 Society and the Ocean</option><option  id = CORC3312 value = CORC3312>CORC 3312 Mathematics of Non-Western Civilizations</option></select>
+	<div id = "selected_courses_div">
+		<ul id = "selected_courses_list">
+		</ul>
+	</div>
+	<hr>
+	<div id = "lulz">
+	</div>
+</body>
+</html>
