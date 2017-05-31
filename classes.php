@@ -27,7 +27,7 @@
                 for(j=0;j<7;j++){
                     cell=row.insertCell();
                     if(classCart[i].days[j]){
-                        cell.innerHTML = `<td><div class="card ${classCart[i].color+' darken-1'}">
+                        cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+' darken-1'}">
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].name}</span>
                                 ${classCart[i].subject}</a>
