@@ -20,22 +20,38 @@
         }
         function populate(){
             scheduleTable = document.getElementById('schedule-table');
-            for(i = 0; i<7; i++){
-                row = scheduleTable.insertRow(i+1);
-                row.insertCell(0);
-                row.innerHTML = i + "th Period"
-                for(j = 1; j<scheduleTable.rows[0].cells.length;j++){
-                    cell = row.insertCell(0);
-                    cell.innerHTML=
-                        `<td><div class="card ${classCart[0].color+' darken-1'}">
+            for(i=0;i<classCart.length;i++){
+                row=scheduleTable.insertRow();
+                timeCell = row.insertCell();
+                timeCell.innerHTML = classCart[i].time;
+                for(j=0;j<7;j++){
+                    cell=row.insertCell();
+                    if(classCart[i].days[j]){
+                        cell.innerHTML = `<td><div class="card ${classCart[i].color+' darken-1'}">
                             <div class="card-content white-text small">
-                                <br><span class="card-title">${classCart[0].name}</span>
-                                ${classCart[0].subject}</a>
-                            </div>
-                        </div></td>`
-                    ;
+                               <br><span class="card-title">${classCart[i].name}</span>
+                                ${classCart[i].subject}</a>
+                           </div>
+                       </div></td>`;
+                    }
                 }
             }
+            // for(i = 0; i<7; i++){
+            //     row = scheduleTable.insertRow(i+1);
+            //     row.insertCell(0);
+            //     row.innerHTML = i + "th Period"
+            //     for(j = 1; j<scheduleTable.rows[0].cells.length;j++){
+            //         cell = row.insertCell(0);
+            //         cell.innerHTML=
+            //             `<td><div class="card ${classCart[0].color+' darken-1'}">
+            //                 <div class="card-content white-text small">
+            //                     <br><span class="card-title">${classCart[0].name}</span>
+            //                     ${classCart[0].subject}</a>
+            //                 </div>
+            //             </div></td>`
+            //         ;
+            //     }
+            // }
         }
     </script>
 </head>

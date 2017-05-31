@@ -126,6 +126,7 @@
             this.subject = subject;
             this.time = "9 AM";
             this.color = getSubjectColor(subject);
+            this.days = [true, false, true, false, true, false, true];
         }
 
         function getSubjectColor(subject){
@@ -244,6 +245,7 @@
                             <select id="codeSelect">
                                 <option value="" disabled selected>Course code</option>
                                 <option value="MATH">MATH</option>
+                                <option value="ENGL">ENGL</option>
                                 <!--<option value="1">ENG</option>-->
                             </select>
                         </div>
@@ -253,6 +255,8 @@
                                 <option value="" disabled selected>Which course?</option>
                                 <option value="Calculus 1">Calculus 1</option>
                                 <option value="Calculus 2">Calculus 2</option>
+                                <option value="ENGLISH 101">English 101</option>
+                                <option value="ENGLISH 102">English 102</option>
                             </select>
                         </div>
                         <br>
