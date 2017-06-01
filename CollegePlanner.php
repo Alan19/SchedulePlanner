@@ -14,6 +14,19 @@
     <script>
         classCart = [];
 
+        function trueOrFalse(){
+            days = [];
+            for(i = 0; i < 7; i++){
+                if(Math.floor(Math.random()*2)==0){
+                    days.push(false);
+                }
+                else{
+                    days.push(true);
+                }
+            }
+            return days;
+        }
+
         function initialize() {
             $(document).ready(function() {
                 // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -124,9 +137,9 @@
         function Course(name, subject) {
             this.name = name;
             this.subject = subject;
-            this.time = "9 AM";
+            this.time = Math.floor(Math.random()*24);
             this.color = getSubjectColor(subject);
-            this.days = [true, false, true, false, true, false, true];
+            this.days = trueOrFalse();
         }
 
         function getSubjectColor(subject){

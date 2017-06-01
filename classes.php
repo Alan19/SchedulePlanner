@@ -13,6 +13,7 @@
         function initialize(){
             classCart = JSON.parse(Cookies.get('courses'));
             populate();
+            printClasses();
         }
         function Course(name, subject){
             this.name = name;
@@ -27,31 +28,39 @@
                 for(j=0;j<7;j++){
                     cell=row.insertCell();
                     if(classCart[i].days[j]){
-                        cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+' darken-1'}">
+                        cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color}">
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].name}</span>
-                                ${classCart[i].subject}</a>
+                                ${classCart[i].subject}
+                           </div>
+                       </div></td>`;
+                    }
+                    else{
+                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+' darken-1'}">
+                            <div class="card-content white-text small">
+                               <br><span class="card-title">Free Period</span>
+                               :)
                            </div>
                        </div></td>`;
                     }
                 }
             }
-            // for(i = 0; i<7; i++){
-            //     row = scheduleTable.insertRow(i+1);
-            //     row.insertCell(0);
-            //     row.innerHTML = i + "th Period"
-            //     for(j = 1; j<scheduleTable.rows[0].cells.length;j++){
-            //         cell = row.insertCell(0);
-            //         cell.innerHTML=
-            //             `<td><div class="card ${classCart[0].color+' darken-1'}">
-            //                 <div class="card-content white-text small">
-            //                     <br><span class="card-title">${classCart[0].name}</span>
-            //                     ${classCart[0].subject}</a>
-            //                 </div>
-            //             </div></td>`
-            //         ;
-            //     }
-            // }
+            $('.cards').masonry({
+                itemSelector: '.col',
+            });
+        }
+        function printClasses(){
+            classCards = $('.class-cards');
+            for(i = 0; i<classCart.length; i++){
+                classCards.append(
+                    `<div class="card ${classCart[i].color+' darken-1'}">
+                            <div class="card-content white-text small">
+                               <br><span class="card-title">${classCart[i].name}</span>
+                                ${classCart[i].subject}</a>
+                           </div>
+                       </div>`
+                );
+            }
         }
     </script>
 </head>
@@ -108,6 +117,7 @@
     </header>
     <main>
         <div class="container">
+            <div class="row">
             <h1 class="blue-text lighten-1 center">Planner</h1>
             <table class="bordered responsive-table" id="schedule-table">
                 <tr>
@@ -121,6 +131,16 @@
                     <td>Sunday</td>
                 </tr>
             </table>
+            </div>
+            <div class="row">
+                <ul class="collapsible" data-collapsible="accordion">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">dashboard</i></div>
+                        <div class="collapsible-body"><span class="class-cards">
+                            
+                        </span></div>
+                    </li>
+            </div>
         </div>
     </main>
     <footer class="page-footer light-blue darken-1">
@@ -135,6 +155,7 @@
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
     <script src="js/js.cookie-2.1.4.min.js"></script>
+    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </body>
 
 </html>
