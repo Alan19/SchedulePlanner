@@ -36,7 +36,7 @@
                        </div></td>`;
                     }
                     else{
-                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card grey}">
+                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card grey">
                             <div class="card-content white-text small">
                                <br><span class="card-title">Free Period</span>
                                :)
@@ -83,9 +83,6 @@
                             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
                         </div>
                     </li>
-                    <!--<li><a href="CollegePlanner.php">Home<i class="large material-icons">home</i></a></li>
-                    <li><a href="CollegePlanner.php">Courses<i class="large material-icons">class</i></a></li>
-                    <li><a href="classes.php">Schedule<i class="large material-icons">schedule</i></a></li>-->
                     <li>
                         <div class="card light-green">
                             <div class="card-content white-text">
@@ -135,7 +132,7 @@
             <div class="row">
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">dashboard</i></div>
+                        <div class="collapsible-header"><i class="material-icons">dashboard</i>Your classes</div>
                         <div class="collapsible-body"><span class="class-cards">
                             
                         </span></div>
