@@ -137,9 +137,18 @@
         function Course(name, subject) {
             this.name = name;
             this.subject = subject;
-            this.time = Math.floor(Math.random()*24);
+            this.time = convertToStandardFormat(Math.floor(Math.random()*24));
             this.color = getSubjectColor(subject);
             this.days = trueOrFalse();
+        }
+
+        function convertToStandardFormat(hour){
+            if(hour > 12){
+                return hour - 12 + "PM";
+            }
+            else{
+                return hour + "AM";
+            }
         }
 
         function getSubjectColor(subject){
