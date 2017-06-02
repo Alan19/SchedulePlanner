@@ -36,7 +36,7 @@
                        </div></td>`;
                     }
                     else{
-                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+' darken-1'}">
+                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card grey}">
                             <div class="card-content white-text small">
                                <br><span class="card-title">Free Period</span>
                                :)
