@@ -11,6 +11,7 @@
 		var chosenOption = document.getElementById(unselectedList.value);
 
 		var a = chosenOption.innerHTML;
+		alert(unselectedList.value);
 
 
 		var entry = document.createElement('LI');
