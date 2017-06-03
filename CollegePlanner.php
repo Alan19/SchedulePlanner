@@ -33,8 +33,10 @@
                 $('#modal1').modal();
                 $('select').material_select();
                 $('.carousel').carousel();
-                if(Cookies.get('courses') == null){
+                if(Cookies.get('courses') == null || Cookies.get('courses') == ''){
                     Cookies.set('courses', "");
+                }
+                else{
                     classCart = JSON.parse(Cookies.get('courses'));
                 }
             });
