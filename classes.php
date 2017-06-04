@@ -28,15 +28,15 @@
                 for(j=0;j<7;j++){
                     cell=row.insertCell();
                     if(classCart[i].days[j]){
-                        cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color}">
+                        cell.innerHTML = `<td class='cell'><div class="card scheduleCard ${classCart[i].color}" style = "height:100px">
                             <div class="card-content white-text small">
-                               <br><span class="card-title">${classCart[i].name}</span>
-                                ${classCart[i].subject}
+                               <br><span class="card-title">${classCart[i].subject}</span>
+                                ${classCart[i].name}
                            </div>
                        </div></td>`;
                     }
                     else{
-                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card grey">
+                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card scheduleCard grey">
                             <div class="card-content white-text small">
                                <br><span class="card-title">Free Period</span>
                                :)
@@ -45,9 +45,6 @@
                     }
                 }
             }
-            $('.cards').masonry({
-                itemSelector: '.col',
-            });
         }
         function printClasses(){
             classCards = $('.class-cards');
@@ -67,22 +64,27 @@
 
 <body onload="initialize()">
     <header>
-        <nav class="light-blue lighten-1" role="navigation">
+        <nav class="light-blue darken-1" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="index.html" class="brand-logo left">Schedule Planner</a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a id="logo-container" href="index.html" class="brand-logo">Schedule Planner</a>
+              <!-- Desktop Navbar -->
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#" data-activates="nav-mobile" class="show-on-large button-collapse"><i class="material-icons">menu</i></a></li>
-                    <li><a href="classes.php">Classes</a></li>
+                  <li><a href="CollegePlanner.php"><i class="material-icons">dashboard</i></a></li>
+                    <li><a href="classes.php" onclick="submitClasses()"><i class="material-icons">schedule</i></a></li>
                 </ul>
+              <!-- Mobile Nav -->
                 <ul id="nav-mobile" class="side-nav">
                     <li>
                         <div class="userView">
                             <div class="background"></div>
-                            <a href="#!user"><img class="circle" src="resources\student1.png"></a>
+                            <a href="#!user"><img class="circle" src="resources\student1.png">
+                            </a>
                             <a href="#!name"><span class="white-text name">John Doe</span></a>
                             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
                         </div>
                     </li>
+                    <div class="container">
                     <li>
                         <div class="card light-green">
                             <div class="card-content white-text">
@@ -107,8 +109,8 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-               
+                </div>
+              </ul>
             </div>
         </nav>
     </header>
@@ -152,7 +154,6 @@
     <script src="js/materialize.js"></script>
     <script src="js/init.js"></script>
     <script src="js/js.cookie-2.1.4.min.js"></script>
-    <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 </body>
 
 </html>

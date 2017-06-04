@@ -13,25 +13,27 @@
 
 <body>
     <header>
-        <nav class="light-blue lighten-1" role="navigation">
+        <nav class="light-blue darken-1" role="navigation">
             <div class="nav-wrapper container">
-                <a id="logo-container" href="index.html" class="brand-logo left">Schedule Planner</a>
+                <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+                <a id="logo-container" href="index.html" class="brand-logo">Schedule Planner</a>
+              <!-- Desktop Navbar -->
                 <ul class="right hide-on-med-and-down">
-                    <li><a href="#" data-activates="nav-mobile" class="show-on-large button-collapse"><i class="material-icons">menu</i></a></li>
-                    <li><a href="classes.php">Classes</a></li>
+                  <li><a href="CollegePlanner.php"><i class="material-icons">dashboard</i></a></li>
+                    <li><a href="classes.php" onclick="submitClasses()"><i class="material-icons">schedule</i></a></li>
                 </ul>
+              <!-- Mobile Nav -->
                 <ul id="nav-mobile" class="side-nav">
                     <li>
                         <div class="userView">
                             <div class="background"></div>
-                            <a href="#!user"><img class="circle" src="resources\student1.png"></a>
+                            <a href="#!user"><img class="circle" src="resources\student1.png">
+                            </a>
                             <a href="#!name"><span class="white-text name">John Doe</span></a>
                             <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
                         </div>
                     </li>
-                    <!--<li><a href="CollegePlanner.php">Home<i class="large material-icons">home</i></a></li>
-                    <li><a href="CollegePlanner.php">Courses<i class="large material-icons">class</i></a></li>
-                    <li><a href="classes.php">Schedule<i class="large material-icons">schedule</i></a></li>-->
+                    <div class="container">
                     <li>
                         <div class="card light-green">
                             <div class="card-content white-text">
@@ -56,8 +58,8 @@
                             </div>
                         </div>
                     </li>
-                </ul>
-               
+                </div>
+              </ul>
             </div>
         </nav>
     </header>
