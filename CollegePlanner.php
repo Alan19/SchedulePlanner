@@ -184,7 +184,7 @@
     </script>
 </head>
 
-<body onload="initialize();">
+<body onload="initialize();" class="grey lighten-4">
     <header>
         <nav class="light-blue darken-1" role="navigation">
             <div class="nav-wrapper container">

@@ -28,7 +28,9 @@
                 for(j=0;j<7;j++){
                     cell=row.insertCell();
                     if(classCart[i].days[j]){
-                        cell.innerHTML = `<td class='cell'><div class="card scheduleCard ${classCart[i].color}" style = "height:100px">
+                        cell.innerHTML = `<td class='cell'>
+                            <div class="card scheduleCard ${classCart[i].color+" darken-1"}">
+                            
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].subject}</span>
                                 ${classCart[i].name}
@@ -36,7 +38,7 @@
                        </div></td>`;
                     }
                     else{
-                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card scheduleCard grey">
+                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+" darken-2"}">
                             <div class="card-content white-text small">
                                <br><span class="card-title">Free Period</span>
                                :)
@@ -51,6 +53,7 @@
             for(i = 0; i<classCart.length; i++){
                 classCards.append(
                     `<div class="card ${classCart[i].color+' darken-1'}">
+                            <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}"><i class="material-icons">delete</i></a>
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].name}</span>
                                 ${classCart[i].subject}</a>
@@ -62,7 +65,7 @@
     </script>
 </head>
 
-<body onload="initialize()">
+<body onload="initialize()" class="grey lighten-4">
     <header>
         <nav class="light-blue darken-1" role="navigation">
             <div class="nav-wrapper container">
@@ -134,7 +137,7 @@
             <div class="row">
                 <ul class="collapsible" data-collapsible="accordion">
                     <li>
-                        <div class="collapsible-header"><i class="material-icons">dashboard</i>Your classes</div>
+                        <div class="collapsible-header grey lighten-5"><i class="material-icons">dashboard</i>Your classes</div>
                         <div class="collapsible-body"><span class="class-cards">
                             
                         </span></div>
