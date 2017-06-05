@@ -38,7 +38,7 @@
                        </div></td>`;
                     }
                     else{
-                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+" darken-2"}">
+                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+" darken-3"}">
                             <div class="card-content white-text small">
                                <br><span class="card-title">Free Period</span>
                                :)
@@ -53,7 +53,7 @@
             for(i = 0; i<classCart.length; i++){
                 classCards.append(
                     `<div class="card ${classCart[i].color+' darken-1'}">
-                            <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}"><i class="material-icons">delete</i></a>
+                            <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}" onclick = "deleteClass(${classCart[i].name})"><i class="material-icons">delete</i></a>
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].name}</span>
                                 ${classCart[i].subject}</a>
@@ -62,6 +62,18 @@
                 );
             }
         }
+//       function deleteClass(className){
+//             for(i = 0; i < classCart.length; i++){
+//                 if(className == classCart[i].name){
+//                     index = i;
+//                     break;
+//                 }
+//             }
+//             classCart.splice(i, 1);
+//             Cookies.set('courses', JSON.stringify(classCart));
+//             scheduleTable.innerHTML = "";
+//             populate();
+//         }
     </script>
 </head>
 
@@ -145,10 +157,10 @@
             </div>
         </div>
     </main>
-    <footer class="page-footer light-blue darken-1">
+    <footer class="page-footer green darken-1">
         <div class="footer-copyright">
             <div class="container">
-                Made by the <a class="blue-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="blue-text text-lighten-3" href="http://materializecss.com">Materialize</a> 
+                Made by the <a class="green-text text-lighten-3" href="https://github.com/Alan19/SchedulePlanner"> SchedulePlanner Team</a> with <a class="green-text text-lighten-3" href="http://materializecss.com">Materialize</a>
             </div>
         </div>
     </footer>
