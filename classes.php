@@ -53,7 +53,7 @@
             for(i = 0; i<classCart.length; i++){
                 classCards.append(
                     `<div class="card ${classCart[i].color+' darken-1'}">
-                            <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}" onclick = "deleteClass(${classCart[i].name})"><i class="material-icons">delete</i></a>
+                            <a onclick = "deleteClass('${classCart[i].name}')" class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}"><i class="material-icons">delete</i></a>
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].name}</span>
                                 ${classCart[i].subject}</a>
@@ -62,18 +62,20 @@
                 );
             }
         }
-//       function deleteClass(className){
-//             for(i = 0; i < classCart.length; i++){
-//                 if(className == classCart[i].name){
-//                     index = i;
-//                     break;
-//                 }
-//             }
-//             classCart.splice(i, 1);
-//             Cookies.set('courses', JSON.stringify(classCart));
-//             scheduleTable.innerHTML = "";
-//             populate();
-//         }
+      function deleteClass(className){
+            for(i = 0; i < classCart.length; i++){
+                if(className == classCart[i].name){
+                    index = i;
+                    break;
+                }
+            }
+            classCart.splice(i, 1);
+            Cookies.set('courses', JSON.stringify(classCart));
+            scheduleTable.innerHTML = "";
+            populate();
+            classCards.html("");
+            printClasses();
+        }
     </script>
 </head>
 
