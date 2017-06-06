@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+
     <script>
         function initialize(){
             classCart = JSON.parse(Cookies.get('courses'));
@@ -27,18 +29,20 @@
                 timeCell.innerHTML = classCart[i].time;
                 for(j=0;j<7;j++){
                     cell=row.insertCell();
+                    id = classCart[i].name.replace(/\s+/g, '');
                     if(classCart[i].days[j]){
-                        cell.innerHTML = `<td class='cell'>
-                            <div class="card scheduleCard ${classCart[i].color+" darken-1"}">
-                            
-                            <div class="card-content white-text small">
-                               <br><span class="card-title">${classCart[i].subject}</span>
-                                ${classCart[i].name}
-                           </div>
-                       </div></td>`;
+                        cell.innerHTML = `<td>
+                            <div class="card scheduleCard ${classCart[i].color+" darken-1 " + id}"
+}">
+                              <div class="card-content white-text small">
+                                 <br><span class="card-title">${classCart[i].subject}</span>
+                                  ${classCart[i].name}
+                             </div>
+                            </div>
+                            </td>`;
                     }
                     else{
-                        cell.innerHTML = cell.innerHTML = `<td class='cell'><div class="card ${classCart[i].color+" darken-3"}">
+                        cell.innerHTML = cell.innerHTML = `<td><div class="card ${classCart[i].color+" darken-3 " + id}">
                             <div class="card-content white-text small">
                                <br><span class="card-title">Free Period</span>
                                :)
@@ -52,29 +56,44 @@
             classCards = $('.class-cards');
             for(i = 0; i<classCart.length; i++){
                 classCards.append(
-                    `<div class="card ${classCart[i].color+' darken-1'}">
-                            <a onclick = "deleteClass('${classCart[i].name}')" class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}"><i class="material-icons">delete</i></a>
+                    `<div class="card ${classCart[i].color+' darken-1 ' + id}">
+                            <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}" href = "#modal${i}"><i class="material-icons">delete</i></a>
                             <div class="card-content white-text small">
                                <br><span class="card-title">${classCart[i].name}</span>
                                 ${classCart[i].subject}</a>
                            </div>
-                       </div>`
+                       </div><br>
+                      <div id="modal${i}" class="modal">
+                        <div class="modal-content">
+                          <h4>Are you sure you want to delete this class?</h4>
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick = "deleteClass('${classCart[i].name}', '${classCart[i].name.replace(/\s+/g, '')}')">Yes</a>
+                        </div>
+                      </div>`
                 );
+                $(`#modal${i}`).modal();
             }
         }
-      function deleteClass(className){
+      function deleteClass(className, id){
             for(i = 0; i < classCart.length; i++){
                 if(className == classCart[i].name){
                     index = i;
                     break;
                 }
             }
-            classCart.splice(i, 1);
-            Cookies.set('courses', JSON.stringify(classCart));
-            scheduleTable.innerHTML = "";
-            populate();
-            classCards.html("");
-            printClasses();
+            $(`.${id}`).addClass('animated bounceOut');
+            $(`.${id}`).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(event){
+              classCart.splice(i, 1);
+              Cookies.set('courses', JSON.stringify(classCart));
+              scheduleTable.innerHTML = "";
+              populate();
+              classCards.html("");
+              printClasses();
+            }
+                                 
+            );
+            
         }
     </script>
 </head>
