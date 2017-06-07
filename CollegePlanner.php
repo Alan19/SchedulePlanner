@@ -94,12 +94,6 @@
                         `<li><a href="#" onclick="changeDropdownText('classes','${cityClasses[i]}')">${cityClasses[i]}</a></li>`
                     );
                 }
-            } else if (college == "Baruch College") {
-                for (i = 0; i < baruchClasses.length; i++) {
-                    $("#dropdown3").append(
-                        `<li><a href="#" onclick="changeDropdownText('classes','${baruchClasses[i]}')">${baruchClasses[i]}</a></li>`
-                    );
-                }
             } else if (college == "Queens College") {
                 for (i = 0; i < queensClasses.length; i++) {
                     $("#dropdown3").append(
@@ -348,8 +342,6 @@
                 </div>
                 <div class="carousel">
                     <a class="carousel-item"><img src="http://www.hunter.cuny.edu/research/repository/images/hunter_campus1.jpg/image_preview">
-                    </a>
-                    <a class="carousel-item"><img src="https://www.baruch.cuny.edu/undergrad/images/VerticalCampus2_002.jpg">
                     </a>
                     <a class="carousel-item"><img src="https://static01.nyt.com/images/2016/08/30/nyregion/30CUNY3/30CUNY2-1472516337388-master768.jpg">
                     </a>
