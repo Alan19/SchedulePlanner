@@ -246,12 +246,10 @@
                 <div class="row">
                     <div class="input-field col s4">
                         <select id="schoolPick" onchange="changeCarousel()">
-                            <option value="" disabled selected>Which School are you Attending?</option>
-                            <option value="1">Hunter College</option>
-                            <option value="2">Baruch College</option>
-                            <option value="3">City College</option>
-                            <option value="4">Queens College</option>
-                            <option value="5">Brooklyn College</option>
+                            <option value="hunter" selected>Hunter College</option>
+                            <option value="ccny">City College</option>
+                            <option value="queens">Queens College</option>
+                            <option value="brooklyn">Brooklyn College</option>
                         </select>
                         <label>School</label>
                     </div>
