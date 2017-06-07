@@ -124,6 +124,10 @@
             populate(college);
         }
 
+        function changeCourse(){
+            var x = document.getElementById("schoolPick").value;
+        }
+
         function verifyCourses() {
             if ($('#courseSelect').val() == null || $('#codeSelect').val() == null) {
                 Materialize.toast('Please fill out all forms to add course', 10000);
@@ -245,7 +249,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <select id="schoolPick" onchange="changeCarousel()">
+                        <select id="schoolPick" onchange="changeCarousel(); changeCourse()">
                             <option value="hunter" selected>Hunter College</option>
                             <option value="ccny">City College</option>
                             <option value="queens">Queens College</option>
