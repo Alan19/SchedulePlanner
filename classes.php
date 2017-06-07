@@ -86,7 +86,10 @@
 			    $(`.${id}`).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(event){
 			      classCart.splice(i, 1);
           Cookies.set('courses', JSON.stringify(classCart));
-          $(`.${id}`).remove();
+          scheduleTable.innerHTML = "";
+             populate();
+             classCards.html("");
+             printClasses();
 			    }
 			                         
 			    );
