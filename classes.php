@@ -55,19 +55,21 @@
 			        id = classCart[i].name.replace(/\s+/g, '');
 			        classCards.append(
 			            `<div class="${id}">
-			                <div class="card ${classCart[i].color+' darken-1 '}">
-                      <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color}" href = "#modal${i}"><i class="material-icons">delete</i></a>
+			                <div class="card ${classCart[i].color+' darken-1'}">
+                      <a class="btn-floating halfway-fab waves-effect waves-light ${classCart[i].color} lighten-1" href = "#modal${i}"><i class="material-icons">delete</i></a>
 			                    <div class="card-content white-text small">
 			                       <br><span class="card-title">${classCart[i].name}</span>
 			                        ${classCart[i].subject}</a>
 			                   </div>
 			               </div><br>
-			              <div id="modal${i}" class="modal">
+			              <div id="modal${i}" class="modal grey lighten-2">
 			                <div class="modal-content">
-			                  <h3>Are you sure you want to delete this class?</h3>
+			                  <h5>Are you sure you want to delete this class?</h5>
+												<p>This will delete this class forever!!!</p>
 			                </div>
-			                <div class="modal-footer">
+			                <div class="modal-footer grey lighten-3">
 			                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick = "deleteClass('${classCart[i].name}', '${classCart[i].name.replace(/\s+/g, '')}')">Yes</a>
+												<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">No</a>
 			                </div>
 			              </div>
 			</div>`
@@ -94,6 +96,10 @@
 			                         
 			    );
 			    
+			}
+			
+			function removeWhitespace(sentence){
+				sentence.replace(/\s+/g, '');
 			}
 		</script>
 	</head>
