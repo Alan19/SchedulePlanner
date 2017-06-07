@@ -19,8 +19,8 @@
 		</script>
 	</head>
 	<body onload = "initialize();">
-<!-- <form method="post" action="after_schoolselect.php"> -->
-<form>
+<form method="get" action="postschoolselect_5d.php">
+<!-- <form> -->
 		<select name="schools">
 			<option value="brooklyn">Brooklyn College</option>
 			<option value="ccny">CCNY</option>
