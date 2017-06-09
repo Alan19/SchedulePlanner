@@ -62,18 +62,18 @@
                 );
             }
         }
-//       function deleteClass(className){
-//             for(i = 0; i < classCart.length; i++){
-//                 if(className == classCart[i].name){
-//                     index = i;
-//                     break;
-//                 }
-//             }
-//             classCart.splice(i, 1);
-//             Cookies.set('courses', JSON.stringify(classCart));
-//             scheduleTable.innerHTML = "";
-//             populate();
-//         }
+      function deleteClass(className){
+            for(i = 0; i < classCart.length; i++){
+                if(className == classCart[i].name){
+                    index = i;
+                    break;
+                }
+            }
+            classCart.splice(i, 1);
+            Cookies.set('courses', JSON.stringify(classCart));
+            scheduleTable.innerHTML = "";
+            populate();
+        }
     </script>
 </head>
 
