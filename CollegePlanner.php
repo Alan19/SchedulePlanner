@@ -94,12 +94,6 @@
                         `<li><a href="#" onclick="changeDropdownText('classes','${cityClasses[i]}')">${cityClasses[i]}</a></li>`
                     );
                 }
-            } else if (college == "Baruch College") {
-                for (i = 0; i < baruchClasses.length; i++) {
-                    $("#dropdown3").append(
-                        `<li><a href="#" onclick="changeDropdownText('classes','${baruchClasses[i]}')">${baruchClasses[i]}</a></li>`
-                    );
-                }
             } else if (college == "Queens College") {
                 for (i = 0; i < queensClasses.length; i++) {
                     $("#dropdown3").append(
@@ -122,6 +116,10 @@
             currentCollege = college;
             // alert("College set");
             populate(college);
+        }
+
+        function changeCourse(){
+            var x = document.getElementById("schoolPick").value;
         }
 
         function verifyCourses() {
@@ -245,13 +243,11 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <select id="schoolPick" onchange="changeCarousel()">
-                            <option value="" disabled selected>Which School are you Attending?</option>
-                            <option value="1">Hunter College</option>
-                            <option value="2">Baruch College</option>
-                            <option value="3">City College</option>
-                            <option value="4">Queens College</option>
-                            <option value="5">Brooklyn College</option>
+                        <select id="schoolPick" onchange="changeCarousel(); changeCourse()">
+                            <option value="hunter" selected>Hunter College</option>
+                            <option value="ccny">City College</option>
+                            <option value="queens">Queens College</option>
+                            <option value="brooklyn">Brooklyn College</option>
                         </select>
                         <label>School</label>
                     </div>
@@ -346,8 +342,6 @@
                 </div>
                 <div class="carousel">
                     <a class="carousel-item"><img src="http://www.hunter.cuny.edu/research/repository/images/hunter_campus1.jpg/image_preview">
-                    </a>
-                    <a class="carousel-item"><img src="https://www.baruch.cuny.edu/undergrad/images/VerticalCampus2_002.jpg">
                     </a>
                     <a class="carousel-item"><img src="https://static01.nyt.com/images/2016/08/30/nyregion/30CUNY3/30CUNY2-1472516337388-master768.jpg">
                     </a>
