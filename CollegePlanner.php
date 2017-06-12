@@ -81,7 +81,7 @@
             // console.log("hello");
             $("#dropdown3").html("");
             if (college == "Hunter College") {
-                // console.log(currentCollege);                
+                // console.log(currentCollege);
                 for (i = 0; i < hunterClasses.length; i++) {
                     // console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
                     $("#dropdown3").append(
@@ -115,12 +115,46 @@
             $("#" + dropdownID).width(originalWidth);
             currentCollege = college;
             // alert("College set");
-            populate(college);
+          //   populate(college);
         }
 
-        function changeCourse(){
-            var x = document.getElementById("schoolPick").value;
+	   function getCourses(school) {
+		//    alert("hue");
+		alert(school);
+		   document.getElementById("courseSelect").innerHTML = "";
+   		var xmlhttp = new XMLHttpRequest();
+   		xmlhttp.onreadystatechange = function() {
+   			if (this.readyState == 4 && this.status == 200) {
+				var defOpt = "<option selected disabled>Select a course</option>"
+   				document.getElementById("courseSelect").innerHTML = defOpt + this.responseText;
+
+
+				$(document).ready(function() {
+					$('select').material_select();
+				});
+   			}
+   		};
+
+  //  		var stringy = "getcourses.php?q=" + document.getElementById('schoolPick').value;
+   		xmlhttp.open("GET", "getcourses.php?q=" + school, true);
+   		xmlhttp.send();
+
+
+
+
+
+   	}
+
+	function getSelectedOption(sel) {
+        var opt;
+        for ( var i = 0, len = sel.options.length; i < len; i++ ) {
+            opt = sel.options[i];
+            if ( opt.selected === true ) {
+               break;
+            }
         }
+        return opt;
+    }
 
         function verifyCourses() {
             if ($('#courseSelect').val() == null || $('#codeSelect').val() == null) {
@@ -134,7 +168,10 @@
                   }
                 }
                 Materialize.toast('Course Added!', 10000);
-                classCart.push(new Course($('#courseSelect').val(), $('#codeSelect').val()));
+               //  classCart.push(new Course($('#courseSelect').val(), $('#codeSelect').val()));
+			var selectedCourse = getSelectedOption(document.getElementById('courseSelect'));
+			alert(selectedCourse.getAttribute("data-course-name"));
+			 classCart.push(new Course(selectedCourse.getAttribute("data-course-name"), selectedCourse.getAttribute("data-prefix")));
                 Cookies.set('courses', JSON.stringify(classCart));
                 return false;
             }
@@ -183,9 +220,10 @@
         }
 
         function submitClasses(){
-            
+
         }
     </script>
+
 </head>
 
 <body onload="initialize();" class="grey lighten-4">
@@ -241,6 +279,7 @@
         </nav>
     </header>
     <br />
+
     <main>
         <center>
             <div class="container">
@@ -249,17 +288,20 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s4">
-                        <select id="schoolPick" onchange="changeCarousel(); changeCourse()">
-                            <option value="hunter" selected>Hunter College</option>
-                            <option value="ccny">City College</option>
-                            <option value="queens">Queens College</option>
-                            <option value="brooklyn">Brooklyn College</option>
+
+				<select id="schoolPick" onchange="changeCarousel(); getCourses(this.value);">
+					    <option selected disabled>What school are you attending?</option>
+					    <option value="brooklyn">Brooklyn College</option>
+					    <option value="ccny">City College</option>
+					    <option value="hunter">Hunter College</option>
+					    <option value="queens">Queens College</option>
                         </select>
                         <label>School</label>
                     </div>
+				<!-- <div id ="courseSelect"></div> -->
                     <div class="input-field offset-s4 col s4">
                         <select>
-                            <option value="" disabled selected>Which term are you attending?</option>
+                            <option disabled selected>Which term are you attending?</option>
                             <option value="1">Summer 2017</option>
                             <option value="2">Fall 2017</option>
                             <option value="3">Spring 2018</option>
@@ -268,19 +310,20 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form onsubmit="return verifyCourses()" method="post">
+                    <!-- <form onsubmit="return verifyCourses()" method="post"> -->
+				<form>
                         <div class="input-field col s4">
                             <select id="codeSelect">
                                 <option value="" disabled selected>Course code</option>
                                 <option value="MATH">MATH</option>
                                 <option value="ENGL">ENGL</option>
-                                <!--<option value="1">ENG</option>-->
+
                             </select>
                         </div>
-                        <!--Change to Dropdown-->
+
                         <div class="input-field offset-s4 col s4">
                             <select id="courseSelect">
-                                <option value="" disabled selected>Which course?</option>
+                                <option value="" disabled selected>Select a course</option>
                                 <option value="Calculus 1">Calculus 1</option>
                                 <option value="Calculus 2">Calculus 2</option>
                                 <option value="ENGLISH 101">English 101</option>
