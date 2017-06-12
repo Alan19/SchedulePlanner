@@ -127,7 +127,13 @@
                 Materialize.toast('Please fill out all forms to add course', 10000);
                 return false;
             } else {
-                Materialize.toast('Course Added!', 10000)
+                for(i = 0; i < classCart.length; i++){
+                  if($('#courseSelect').val() == classCart[i].name){
+                    Materialize.toast('You are already taking this course!', 10000);
+                    return false;
+                  }
+                }
+                Materialize.toast('Course Added!', 10000);
                 classCart.push(new Course($('#courseSelect').val(), $('#codeSelect').val()));
                 Cookies.set('courses', JSON.stringify(classCart));
                 return false;
