@@ -10,22 +10,42 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
         <link href="extras\noUiSlider\nouislider.css" rel="stylesheet">
-        <style></style>
+        <style>
+            .waves-effect.waves-cyan .waves-ripple {
+            /* The alpha value allows the text and background color
+            of the button to still show through. */
+            background-color: rgba(0, 188, 212, 0.65);
+            }
+
+            .waves-effect.waves-amber .waves-ripple {
+            /* The alpha value allows the text and background color
+            of the button to still show through. */
+            background-color: rgba(255, 193, 7, 0.65);
+            }
+
+        </style>
         <script>
             classCart = [];
-            function trueOrFalse(){
+
+            function getDays(){
                 days = [];
-                for(i = 0; i < 7; i++){
-                    if(Math.floor(Math.random()*2)==0){
-                        days.push(false);
+                for(var i = 1; i <=7 ; i++){
+                    if($(`#filled-in-box${i}`).is(':checked')){
+                        days.push(true);
                     }
                     else{
-                        days.push(true);
+                        days.push(false);
                     }
                 }
                 return days;
             }
             
+            function wipeAllInfo(){
+                Cookies.set('courses', "");
+                classCart = [];
+                alert("All classes and cookies wiped");
+            }
+
             function initialize() {
                 $(document).ready(function() {
                     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -38,7 +58,7 @@
                     else{
                         classCart = JSON.parse(Cookies.get('courses'));
                     }
-                      var slider = document.getElementById('hourSlider');
+                    slider = document.getElementById('hourSlider');
                         noUiSlider.create(slider, {
                             start: [8, 9],
                             connect: true,
@@ -157,9 +177,11 @@
             function Course(name, subject) {
                 this.name = name;
                 this.subject = subject;
-                this.time = convertToStandardFormat(Math.floor(Math.random()*24));
+                sliderValues = slider.noUiSlider.get();
+                this.timeStart = convertToStandardFormat(sliderValues[0]);
+                this.timeEnd = convertToStandardFormat(sliderValues[1]);
                 this.color = getSubjectColor(subject);
-                this.days = trueOrFalse();
+                this.days = getDays();
             }
             
             function convertToStandardFormat(hour){
@@ -201,6 +223,7 @@
                     <ul class="right hide-on-med-and-down">
                         <li><a href="CollegePlanner.php"><i class="material-icons">dashboard</i></a></li>
                         <li><a href="classes.php"><i class="material-icons">schedule</i></a></li>
+                        
                     </ul>
                     <!-- Mobile Nav -->
                     <ul id="nav-mobile" class="side-nav">
@@ -213,38 +236,16 @@
                                 <a href="#!email"><span class="white-text email">jdandturk@gmail.com</span></a>
                             </div>
                         </li>
-                        <div class="container">
-                            <li>
-                                <div class="card light-green">
-                                    <div class="card-content white-text">
-                                        <br><span class="card-title"><i class="material-icons" style="font-size: 70px">home</i></span>
-                                        <a href="index.html">
-                                            <h2>Home</h2>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card amber">
-                                    <div class="card-content white-text">
-                                        <br><span class="card-title"><i class="material-icons" style="font-size: 70px">class</i></span>
-                                        <a href="CollegePlanner.php">
-                                            <h2>Courses</h2>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="card cyan">
-                                    <div class="card-content white-text">
-                                        <br><span class="card-title"><i class="material-icons" style="font-size: 70px">schedule</i></span>
-                                        <a href="classes.php">
-                                            <h2>Schedule</h2>
-                                        </a>
-                                    </div>
-                                </div>
-                            </li>
-                        </div>
+                        <li><a href = "index.html" class="waves-effect waves-green"><i class="material-icons">home</i>Home</a></li>
+                        <li><a href = "CollegePlanner.php" class="waves-effect waves-amber"><i class="material-icons">class</i>Planner</a></li>
+                        <li><a href = "classes.php" class="waves-effect waves-cyan"><i class="material-icons">schedule</i>Schedule</a></li>
+                        <li><div class="divider"></div></li>
+                        <li><a class="subheader">CUNY Info</a></li>
+                        <li><a class = "waves-effect waves-purple" href="https://home.cunyfirst.cuny.edu/psp/cnyepprd/GUEST/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL?FolderPath=PORTAL_ROOT_OBJECT.HC_CLASS_SEARCH_GBL&IsFolder=false&IgnoreParamTempl=FolderPath%2CIsFolder"><i class="material-icons">explore</i>Registrar</a></li>
+                        <li><a class="waves-effect" href="http://www.brooklyn.cuny.edu/web/home.php"><i class="material-icons">favorite</i>Brooklyn College</a></li>
+                        <li><a class="waves-effect" href="http://www.qc.cuny.edu/Pages/home.aspx"><i class="material-icons">favorite</i>Queens College</a></li>
+                        <li><a class="waves-effect" href="http://www.hunter.cuny.edu/main/"><i class="material-icons">favorite</i>Hunter College</a></li>
+                        <li><a class="waves-effect" href="https://www.ccny.cuny.edu/"><i class="material-icons">favorite</i>City College</a></li>
                     </ul>
                 </div>
             </nav>
@@ -289,7 +290,7 @@
                         </div>
                         <br>
                         <br>
-                        <a class="btn waves-effect waves-light col s4" href="#modal1">
+                        <a class="btn waves-effect waves-light" href="#modal1">
                             Submit<i class="material-icons right">send</i>
                         </a>
                         <!-- Modal Structure -->
@@ -300,7 +301,7 @@
                                         <h5 class="blue-text lighten-5">Days the class will take place on</h5>
                                             <p>
                                                 <input type="checkbox" class="filled-in" id="filled-in-box1" />
-                                                <label for="filled-in-box">Monday</label>
+                                                <label for="filled-in-box1">Monday</label>
                                             </p>
                                             <p>
                                                 <input type="checkbox" class="filled-in" id="filled-in-box2" />
