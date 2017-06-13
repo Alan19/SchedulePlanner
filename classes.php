@@ -24,7 +24,7 @@
 			    for(i=0;i<classCart.length;i++){
 			        row=scheduleTable.insertRow();
 			        timeCell = row.insertCell();
-			        timeCell.innerHTML = classCart[i].time;
+			        timeCell.innerHTML = classCart[i].timeStart + "-" + classCart[i].timeEnd;
 			        for(j=0;j<7;j++){
 			            cell=row.insertCell();
 			            id = classCart[i].name.replace(/\s+/g, '');
