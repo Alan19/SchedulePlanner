@@ -9,9 +9,24 @@
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		<style>
+            .waves-effect.waves-cyan .waves-ripple {
+            /* The alpha value allows the text and background color
+            of the button to still show through. */
+            background-color: rgba(0, 188, 212, 0.65);
+            }
+
+            .waves-effect.waves-amber .waves-ripple {
+            /* The alpha value allows the text and background color
+            of the button to still show through. */
+            background-color: rgba(255, 193, 7, 0.65);
+            }
+
+        </style>
 		<script>
 			function initialize(){
 			    classCart = JSON.parse(Cookies.get('courses'));
+				checkForOverlap();
 			    populate();
 			    printClasses();
 			}
@@ -19,19 +34,50 @@
 			    this.name = name;
 			    this.subject = subject;
 			}
+
+			function convertToStandardFormat(hour){
+                if(hour > 12){
+                    return hour - 12 + "PM";
+                }
+                else{
+                    return hour + "AM";
+                }
+            }
+
+			function checkForOverlap(){
+				statusButton = $('.status-button');
+				if(classCart.length > 0){
+					for(var i = 0; i < classCart.length-1; i++){
+						if(classCart[i].timeEnd > classCart[i+1].timeStart){
+							statusButton.addClass('red');
+							statusButton.removeClass('blue');
+							statusButton.html(
+								'<i class="material-icons">warning</i>'
+							);
+							return true;
+						}
+					}
+				}
+				statusButton.addClass('blue');
+				statusButton.removeClass('red');
+				statusButton.html(
+					'<i class="material-icons">check</i>'
+				);
+			}
+
 			function populate(){
 			    scheduleTable = document.getElementById('schedule-table');
 			    for(i=0;i<classCart.length;i++){
 			        row=scheduleTable.insertRow();
 			        timeCell = row.insertCell();
-			        timeCell.innerHTML = classCart[i].timeStart + "-" + classCart[i].timeEnd;
+			        timeCell.innerHTML = convertToStandardFormat(classCart[i].timeStart) + "-" + convertToStandardFormat(classCart[i].timeEnd);
 			        for(j=0;j<7;j++){
 			            cell=row.insertCell();
 			            id = classCart[i].name.replace(/\s+/g, '');
 			            if(classCart[i].days[j]){
 			                cell.innerHTML = `<td>
 			                    <div class="card scheduleCard ${classCart[i].color+" darken-1 " + id}"}">
-			                      <div class="card-content white-text small">
+			                      <div class="card-content white-text">
 			                         <br><span class="card-title">${classCart[i].subject}</span>
 			                          ${classCart[i].name}
 			                     </div>
@@ -40,7 +86,7 @@
 			            }
 			            else{
 			                cell.innerHTML = cell.innerHTML = `<td><div class="card ${classCart[i].color+" darken-3 " + id}">
-			                    <div class="card-content white-text small">
+			                    <div class="card-content white-text">
 			                       <br><span class="card-title">Free Period</span>
 			                       :)
 			                   </div>
@@ -86,16 +132,15 @@
 			    }
 			    $(`.${id}`).addClass('animated bounceOut');
 			    $(`.${id}`).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(event){
-			      classCart.splice(i, 1);
-          Cookies.set('courses', JSON.stringify(classCart));
-          scheduleTable.innerHTML = "";
-             populate();
-             classCards.html("");
-             printClasses();
+			      	classCart.splice(i, 1);
+					Cookies.set('courses', JSON.stringify(classCart));
+					scheduleTable.innerHTML = "";
+					populate();
+					classCards.html("");
+					printClasses();
+					checkForOverlap();
 			    }
-			                         
 			    );
-			    
 			}
 			
 			function removeWhitespace(sentence){
@@ -140,10 +185,8 @@
 			</nav>
 		</header>
 		<main>
-			<div class="container">
-				<div class="row">
 					<h1 class="blue-text lighten-1 center">Planner</h1>
-					<table class="bordered responsive-table" id="schedule-table">
+					<table class="bordered responsive-table center" style="width:70%;margin:auto" id="schedule-table">
 						<tr>
 							<td></td>
 							<td>Monday</td>
@@ -155,7 +198,7 @@
 							<td>Sunday</td>
 						</tr>
 					</table>
-				</div>
+			<div class="container">
 				<div class="row">
 					<ul class="collapsible" data-collapsible="accordion">
 					<li>
@@ -166,6 +209,12 @@
 					</li>
 				</div>
 			</div>
+			<div class="fixed-action-btn">
+				<a class="btn-floating status-button btn-large waves-effect">
+					
+				</a>
+			</div>
+
 		</main>
 		<footer class="page-footer green darken-1">
 			<div class="footer-copyright">

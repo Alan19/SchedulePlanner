@@ -157,7 +157,6 @@
             function verifyCourses() {
                 if ($('#courseSelect').val() == null) {
                     Materialize.toast('Please fill out all forms to add course', 10000);
-                    return false;
                 } else {
                     courseName = $('#courseSelect option:selected').data('course-name');
                     subject = $('#courseSelect option:selected').data('prefix');
@@ -169,28 +168,31 @@
                     }
                     Materialize.toast('Course Added!', 10000);
                     classCart.push(new Course(courseName, subject));
+                    sortClasses();
                     Cookies.set('courses', JSON.stringify(classCart));
-                    return false;
                 }
             }
             
+            function sortClasses(){
+                for(var i = 0; i < classCart.length-1; i++){
+                    for(var j = i+1; j <classCart.length; j++){
+                        if(classCart[i].timeStart > classCart[j].timeStart){
+                            var temp = classCart[i];
+                            classCart[i] =classCart[j];
+                            classCart[j] = temp;
+                        }
+                    }
+                }
+            }
+
             function Course(name, subject) {
                 this.name = name;
                 this.subject = subject;
                 sliderValues = slider.noUiSlider.get();
-                this.timeStart = convertToStandardFormat(sliderValues[0]);
-                this.timeEnd = convertToStandardFormat(sliderValues[1]);
+                this.timeStart = Number.parseInt(sliderValues[0]);
+                this.timeEnd = Number.parseInt(sliderValues[1]);
                 this.color = getSubjectColor(subject);
                 this.days = getDays();
-            }
-            
-            function convertToStandardFormat(hour){
-                if(hour > 12){
-                    return hour - 12 + "PM";
-                }
-                else{
-                    return hour + "AM";
-                }
             }
             
             function getSubjectColor(subject){
@@ -242,10 +244,10 @@
                         <li><div class="divider"></div></li>
                         <li><a class="subheader">CUNY Info</a></li>
                         <li><a class = "waves-effect waves-purple" href="https://home.cunyfirst.cuny.edu/psp/cnyepprd/GUEST/HRMS/c/COMMUNITY_ACCESS.CLASS_SEARCH.GBL?FolderPath=PORTAL_ROOT_OBJECT.HC_CLASS_SEARCH_GBL&IsFolder=false&IgnoreParamTempl=FolderPath%2CIsFolder"><i class="material-icons">explore</i>Registrar</a></li>
-                        <li><a class="waves-effect" href="http://www.brooklyn.cuny.edu/web/home.php"><i class="material-icons">favorite</i>Brooklyn College</a></li>
-                        <li><a class="waves-effect" href="http://www.qc.cuny.edu/Pages/home.aspx"><i class="material-icons">favorite</i>Queens College</a></li>
-                        <li><a class="waves-effect" href="http://www.hunter.cuny.edu/main/"><i class="material-icons">favorite</i>Hunter College</a></li>
-                        <li><a class="waves-effect" href="https://www.ccny.cuny.edu/"><i class="material-icons">favorite</i>City College</a></li>
+                        <li><a class="waves-effect" href="http://www.brooklyn.cuny.edu/web/home.php"><i class="material-icons">info</i>Brooklyn College</a></li>
+                        <li><a class="waves-effect" href="http://www.qc.cuny.edu/Pages/home.aspx"><i class="material-icons">info</i>Queens College</a></li>
+                        <li><a class="waves-effect" href="http://www.hunter.cuny.edu/main/"><i class="material-icons">info</i>Hunter College</a></li>
+                        <li><a class="waves-effect" href="https://www.ccny.cuny.edu/"><i class="material-icons">info</i>City College</a></li>
                     </ul>
                 </div>
             </nav>
