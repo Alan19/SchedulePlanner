@@ -25,11 +25,54 @@
         </style>
 		<script>
 			function initialize(){
-			    classCart = JSON.parse(Cookies.get('courses'));
+				if(!!Cookies.get('firstVisit')){
+					Cookies.set('courses', "");
+					classCart = [];
+				}
+				else{
+					classCart = JSON.parse(Cookies.get('courses'));
+				}
 				if(checkForOverlap()) $('.tap-target').tapTarget('open');
 			    populate();
 			    printClasses();
+
+				//Term color cookie
+				if (!!Cookies.get('term')) {
+				// have cookie
+					changeColorScheme(Cookies.get('term'));
+					$('#termPick').val(Cookies.get('term'));
+					$('select').material_select();
+				} 
+				else {
+				// no cookie
+					Cookies.set('term', "");
+				}
 			}
+
+			function changeColorScheme(term){
+                $('body').attr('class', '');
+                Cookies.set('term', term);
+                switch(term){
+                    case "spring":
+                        termColor = "green";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                    case "summer":
+                        termColor = "light-blue";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                    case "fall":
+                        termColor = "orange";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                    case "winter":
+                        termColor == "blue";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                }
+                
+            }
+
 			function Course(name, subject){
 			    this.name = name;
 			    this.subject = subject;

@@ -49,12 +49,9 @@
                 $(document).ready(function() {
                     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                     $('#modal1').modal();
-                    $('#modal2').modal({
-                        dismissible: false
-                    });
                     $('select').material_select();
                     $('.carousel').carousel();
-                    if(Cookies.get('courses') == null || Cookies.get('courses') == ''){
+                    if(!!Cookies.get('firstVisit')){
                         Cookies.set('courses', "");
                     }
                     else{
@@ -73,6 +70,10 @@
                             decimals: 0
                         })
                     });
+
+                    //Initialize cookies
+
+                    //School pick cookie
                     if (!!Cookies.get('selectedSchool')) {
                     // have cookie
                         school = Cookies.get('selectedSchool');
@@ -83,19 +84,61 @@
                     else {
                     // no cookie
                         school = "";
+                        $("#courseSelect").prop('disabled', true);
                         Cookies.set('selectedSchool', "");
+                        $('select').material_select();
                     }
+
+                    //Change school warning cookie
                     if (!(!!Cookies.get('firstVisit'))) {
                         //no cookie
                         Cookies.set('firstVisit', "true");
                         $('.tap-target').tapTarget('open');
                     }
+
+                    //Term color cookie
+                    if (!!Cookies.get('term')) {
+                    // have cookie
+                        changeColorScheme(Cookies.get('term'));
+                        $('#termPick').val(Cookies.get('term'));
+                        $('select').material_select();
+                    } 
+                    else {
+                    // no cookie
+                        Cookies.set('term', "");
+                    }
                 });            
+            }
+
+            function changeColorScheme(term){
+                $('body').attr('class', '');
+                Cookies.set('term', term);
+                switch(term){
+                    case "spring":
+                        termColor = "green";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                    case "summer":
+                        termColor = "light-blue";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                    case "fall":
+                        termColor = "orange";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                    case "winter":
+                        termColor == "blue";
+                        $('body').addClass(termColor + " lighten-5");
+                        break;
+                }
+                
             }
 
             function confirmChange(){
                 school = $("#schoolPick").val();
                 Cookies.set('selectedSchool', school);
+                $("#courseSelect").prop('disabled', false);
+                $('select').material_select();
                 if(classCart.length > 0){
                     wipeAllInfo();
                     Materialize.toast('Your classes have been wiped!', 10000);
@@ -273,11 +316,11 @@
                         </div>
                         <!-- Have term change the tint of the schedule page -->
                         <div class="input-field offset-s4 col s4">
-                            <select>
-                                <option disabled selected>Which term are you attending?</option>
-                                <option value="1">Summer 2017</option>
-                                <option value="2">Fall 2017</option>
-                                <option value="3">Spring 2018</option>
+                            <select id="termPick" onchange="changeColorScheme(this.value)">
+                                <option disabled selected>Which term are you attending? (optional)</option>
+                                <option value="summer">Summer 2017</option>
+                                <option value="fall">Fall 2017</option>
+                                <option value="spring">Spring 2018</option>
                             </select>
                             <label>Term</label>
                         </div>
@@ -286,7 +329,7 @@
                     <div class="row">
                         <div class="input-field">
                             <select id="courseSelect">
-                                <option value="" disabled selected>Select a college</option>
+                                <option value="" disabled selected>Select a course</option>
                             </select>
                             <label>Course</label>
                         </div>
