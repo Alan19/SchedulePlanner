@@ -26,7 +26,7 @@
 		<script>
 			function initialize(){
 			    classCart = JSON.parse(Cookies.get('courses'));
-				checkForOverlap();
+				if(checkForOverlap()) $('.tap-target').tapTarget('open');
 			    populate();
 			    printClasses();
 			}
@@ -63,6 +63,8 @@
 				statusButton.html(
 					'<i class="material-icons">check</i>'
 				);
+				$('.tap-target').tapTarget('close');
+				return false;
 			}
 
 			function populate(){
@@ -134,7 +136,16 @@
 			    $(`.${id}`).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(event){
 			      	classCart.splice(i, 1);
 					Cookies.set('courses', JSON.stringify(classCart));
-					scheduleTable.innerHTML = "";
+					scheduleTable.innerHTML = `
+						<td></td>
+						<td>Monday</td>
+						<td>Tuesday</td>
+						<td>Wednesday</td>
+						<td>Thursday</td>
+						<td>Friday</td>
+						<td>Saturday</td>
+						<td>Sunday</td>
+					`;
 					populate();
 					classCards.html("");
 					printClasses();
@@ -185,19 +196,19 @@
 			</nav>
 		</header>
 		<main>
-					<h1 class="blue-text lighten-1 center">Planner</h1>
-					<table class="bordered responsive-table center" style="width:70%;margin:auto" id="schedule-table">
-						<tr>
-							<td></td>
-							<td>Monday</td>
-							<td>Tuesday</td>
-							<td>Wednesday</td>
-							<td>Thursday</td>
-							<td>Friday</td>
-							<td>Saturday</td>
-							<td>Sunday</td>
-						</tr>
-					</table>
+			<h1 class="blue-text lighten-1 center">Planner</h1>
+			<table class="bordered responsive-table center" style="width:70%;margin:auto" id="schedule-table">
+				<tr>
+					<td></td>
+					<td>Monday</td>
+					<td>Tuesday</td>
+					<td>Wednesday</td>
+					<td>Thursday</td>
+					<td>Friday</td>
+					<td>Saturday</td>
+					<td>Sunday</td>
+				</tr>
+			</table>
 			<div class="container">
 				<div class="row">
 					<ul class="collapsible" data-collapsible="accordion">
@@ -210,9 +221,13 @@
 				</div>
 			</div>
 			<div class="fixed-action-btn">
-				<a class="btn-floating status-button btn-large waves-effect">
-					
-				</a>
+				<a class="btn-floating status-button btn-large waves-effect" id="menu"></a>
+				<div class="tap-target red darken-1" data-activates="menu">
+					<div class="tap-target-content">
+						<h5 class="white-text">Overlapping Classes</h5>
+						<p class="white-text">You have some classes that conflicts with other classes! Please remove them.</p>
+					</div>
+				</div>
 			</div>
 
 		</main>

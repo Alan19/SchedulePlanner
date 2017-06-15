@@ -43,13 +43,15 @@
             function wipeAllInfo(){
                 Cookies.set('courses', "");
                 classCart = [];
-                alert("All classes and cookies wiped");
             }
 
             function initialize() {
                 $(document).ready(function() {
                     // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
                     $('#modal1').modal();
+                    $('#modal2').modal({
+                        dismissible: false
+                    });
                     $('select').material_select();
                     $('.carousel').carousel();
                     if(Cookies.get('courses') == null || Cookies.get('courses') == ''){
@@ -59,19 +61,45 @@
                         classCart = JSON.parse(Cookies.get('courses'));
                     }
                     slider = document.getElementById('hourSlider');
-                        noUiSlider.create(slider, {
-                            start: [8, 9],
-                            connect: true,
-                            step: 1,
-                            range: {
-                                'min': 0,
-                                'max': 24
-                            },
-                            format: wNumb({
-                                decimals: 0
-                            })
-                        });
+                    noUiSlider.create(slider, {
+                        start: [8, 9],
+                        connect: true,
+                        step: 1,
+                        range: {
+                            'min': 0,
+                            'max': 24
+                        },
+                        format: wNumb({
+                            decimals: 0
+                        })
+                    });
+                    if (!!Cookies.get('selectedSchool')) {
+                    // have cookie
+                        school = Cookies.get('selectedSchool');
+                        $('#schoolPick').val(school);
+                        getCourses(school);
+                        $('select').material_select();
+                    } 
+                    else {
+                    // no cookie
+                        school = "";
+                        Cookies.set('selectedSchool', "");
+                    }
+                    if (!(!!Cookies.get('firstVisit'))) {
+                        //no cookie
+                        Cookies.set('firstVisit', "true");
+                        $('.tap-target').tapTarget('open');
+                    }
                 });            
+            }
+
+            function confirmChange(){
+                school = $("#schoolPick").val();
+                Cookies.set('selectedSchool', school);
+                if(classCart.length > 0){
+                    wipeAllInfo();
+                    Materialize.toast('Your classes have been wiped!', 10000);
+                }
             }
             
             //Include # in dropdownID in the parameter
@@ -86,46 +114,7 @@
                 $('.carousel').carousel('set', schoolIndex);
             
             }
-            
-            function populate(college) {
-                // console.log("hello");
-                $("#dropdown3").html("");
-                if (college == "Hunter College") {
-                    // console.log(currentCollege);
-                    for (i = 0; i < hunterClasses.length; i++) {
-                        // console.log(`<li><a href="#" onclick="changeDropdownText('classes','math')">${hunterClasses[i]}</a></li>`);
-                        $("#dropdown3").append(
-                            `<li><a href="#" onclick="changeDropdownText('classes','${hunterClasses[i]}')">${hunterClasses[i]}</a></li>`
-                        );
-                    }
-                } else if (college == "City College") {
-                    for (i = 0; i < cityClasses.length; i++) {
-                        $("#dropdown3").append(
-                            `<li><a href="#" onclick="changeDropdownText('classes','${cityClasses[i]}')">${cityClasses[i]}</a></li>`
-                        );
-                    }
-                } else if (college == "Queens College") {
-                    for (i = 0; i < queensClasses.length; i++) {
-                        $("#dropdown3").append(
-                            `<li><a href="#" onclick="changeDropdownText('classes','${queensClasses[i]}')">${queensClasses[i]}</a></li>`
-                        );
-                    }
-                } else {
-                    for (i = 0; i < brooklynClasses.length; i++) {
-                        $("#dropdown3").append(
-                            `<li><a href="#" onclick="changeDropdownText('classes','${brooklynClasses[i]}')">${brooklynClasses[i]}</a></li>`
-                        );
-                    }
-                }
-            }
-            
-            function changeCollege(dropdownID, college) {
-                originalWidth = $("#" + dropdownID).width();
-                $("#" + dropdownID).html(college);
-                $("#" + dropdownID).width(originalWidth);
-                currentCollege = college;
-            }
-            
+                                    
             function getCourses(school) {
                 document.getElementById("courseSelect").innerHTML = "";
                 var xmlhttp = new XMLHttpRequest();
@@ -155,21 +144,33 @@
             }
             
             function verifyCourses() {
+                courseName = $('#courseSelect option:selected').data('course-name');
+                subject = $('#courseSelect option:selected').data('prefix');
+                for(i = 0; i < classCart.length; i++){
+                    if(courseName == classCart[i].name){
+                        Materialize.toast('You are already taking this course!', 10000);
+                    }
+                }
+                Materialize.toast('Course Added!', 10000);
+                classCart.push(new Course(courseName, subject));
+                sortClasses();
+                Cookies.set('courses', JSON.stringify(classCart));
+            }
+
+            function checkForDuplicate(){
+                courseName = $('#courseSelect option:selected').data('course-name');
+                subject = $('#courseSelect option:selected').data('prefix');
                 if ($('#courseSelect').val() == null) {
                     Materialize.toast('Please fill out all forms to add course', 10000);
-                } else {
-                    courseName = $('#courseSelect option:selected').data('course-name');
-                    subject = $('#courseSelect option:selected').data('prefix');
+                } 
+                else{
                     for(i = 0; i < classCart.length; i++){
-                      if(courseName == classCart[i].name){
-                        Materialize.toast('You are already taking this course!', 10000);
-                        return false;
-                      }
+                        if(courseName == classCart[i].name){
+                            Materialize.toast('You are already taking this course!', 10000);
+                            return;
+                        }
                     }
-                    Materialize.toast('Course Added!', 10000);
-                    classCart.push(new Course(courseName, subject));
-                    sortClasses();
-                    Cookies.set('courses', JSON.stringify(classCart));
+                    $('#modal1').modal('open');
                 }
             }
             
@@ -261,7 +262,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s4">
-                            <select id="schoolPick" onchange="changeCarousel(); getCourses(this.value);">
+                            <select id="schoolPick" onchange="changeCarousel(); getCourses(this.value); confirmChange();">
                                 <option selected disabled>What school are you attending?</option>
                                 <option value="brooklyn">Brooklyn College</option>
                                 <option value="ccny">City College</option>
@@ -270,7 +271,6 @@
                             </select>
                             <label>School</label>
                         </div>
-
                         <!-- Have term change the tint of the schedule page -->
                         <div class="input-field offset-s4 col s4">
                             <select>
@@ -292,10 +292,10 @@
                         </div>
                         <br>
                         <br>
-                        <a class="btn waves-effect waves-light" href="#modal1">
+                        <a class="btn waves-effect waves-light" onclick="checkForDuplicate()">
                             Submit<i class="material-icons right">send</i>
                         </a>
-                        <!-- Modal Structure -->
+                        <!-- Time selection modal -->
                         <div id="modal1" class="modal bottom-sheet">
                             <div class="modal-content">
                                 <div class="container">
@@ -353,6 +353,18 @@
                     </div>
                 </div>
             </center>
+            <div class="fixed-action-btn">
+				<a class="btn-floating blue status-button btn-large waves-effect" onclick="$('.tap-target').tapTarget('open');" id="menu">
+					<i class="material-icons">question_answer</i>
+				</a>
+            </div>
+            <div class="tap-target red darken-1" data-activates="menu">
+                <div class="tap-target-content">
+                <h5 class="white-text">Changing your college deletes your classes</h5>
+                <p class="white-text">Make sure you don't change your college unless you want to delete your classes!</p>
+                </div>
+            </div>
+
         </main>
         <!--<button onclick = "addItem();"> Search For Profesor </button>-->
         <!--  Scripts-->
