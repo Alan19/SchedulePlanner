@@ -388,46 +388,46 @@
                     <div class="carousel">
                         <a class="carousel-item"><img src="http://www.hunter.cuny.edu/research/repository/images/hunter_campus1.jpg/image_preview">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Hunter\Hunter building.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Hunter\Hunter building.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Hunter\Hunter gym.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Hunter\Hunter gym.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Hunter\Inside the building of hunter.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Hunter\Inside the building of hunter.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Hunter\Map of Hunter.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Hunter\Map of Hunter.jpg">
                         </a>
                       
                         <a class="carousel-item"><img src="https://static01.nyt.com/images/2016/08/30/nyregion/30CUNY3/30CUNY2-1472516337388-master768.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\City\City building.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\City\City building.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\City\City gym.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\City\City gym.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\City\Inside the building of city.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\City\Inside the building of city.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\City\City map.png">
+                        <a class="carousel-item"><img src="Slideshow CUNY\City\City map.png">
                         </a>
                        
                         <a class="carousel-item"><img src="http://www2.cuny.edu/wp-content/uploads/sites/4/2015/01/09_14_2004_qcc_campus_05.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Queens\Queens building.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Queens\Queens building.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Queens\Queens college inside the building.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Queens\Queens college inside the building.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Queens\Queens gym.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Queens\Queens gym.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Queens\Queens map.gif">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Queens\Queens map.gif">
                         </a>
                     
                         <a class="carousel-item"><img src="http://www.brooklyn.cuny.edu/web/com_campus_exteriors/111121_CampusExterior_738x330_001.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Brooklyn\Brooklyn campus.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Brooklyn\Brooklyn campus.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Brooklyn\brooklyn college inside the building.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Brooklyn\brooklyn college inside the building.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Brooklyn\brooklyn gym.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Brooklyn\brooklyn gym.jpg">
                         </a>
-                        <a class="carousel-item"><img src="C:\MAMP\htdocs\SchedulePlanner\Slideshow CUNY\Brooklyn\Brooklyn map.jpg">
+                        <a class="carousel-item"><img src="Slideshow CUNY\Brooklyn\Brooklyn map.jpg">
                         </a>
                     </div>
                 </div>
