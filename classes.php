@@ -8,7 +8,7 @@
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 		<link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
 		<link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+		<link rel="stylesheet" href="css\animate.css">
 		<style>
             .waves-effect.waves-cyan .waves-ripple {
             /* The alpha value allows the text and background color
@@ -283,7 +283,7 @@
 			</div>
 		</footer>
 		<!--  Scripts-->
-		<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script src="js\jquery-3.2.1.min.js"></script>
 		<script src="js/materialize.js"></script>
 		<script src="js/init.js"></script>
 		<script src="js/js.cookie-2.1.4.min.js"></script>
