@@ -25,12 +25,13 @@
         </style>
 		<script>
 			function initialize(){
-				if(!!Cookies.get('firstVisit')){
-					Cookies.set('courses', "");
-					classCart = [];
+				if(!!Cookies.get('courses')){
+					classCart = JSON.parse(Cookies.get('courses'));
 				}
 				else{
-					classCart = JSON.parse(Cookies.get('courses'));
+					Cookies.set('courses', "");
+					classCart = [];
+					$('.classAccordion').hide();
 				}
 				if(checkForOverlap()) $('.tap-target').tapTarget('open');
 			    populate();
@@ -254,7 +255,7 @@
 			</table>
 			<div class="container">
 				<div class="row">
-					<ul class="collapsible" data-collapsible="accordion">
+					<ul class="collapsible classAccordion" data-collapsible="accordion">
 					<li>
 						<div class="collapsible-header grey lighten-5"><i class="material-icons">dashboard</i>Your classes</div>
 						<div class="collapsible-body"><span class="class-cards">

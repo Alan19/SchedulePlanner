@@ -10,6 +10,7 @@
         <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
         <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
         <link href="extras\noUiSlider\nouislider.css" rel="stylesheet">
+        
         <style>
             .waves-effect.waves-cyan .waves-ripple {
             /* The alpha value allows the text and background color
@@ -51,11 +52,11 @@
                     $('#modal1').modal();
                     $('select').material_select();
                     $('.carousel').carousel();
-                    if(!!Cookies.get('firstVisit')){
-                        Cookies.set('courses', "");
+                    if(!!Cookies.get('courses')){
+                        classCart = JSON.parse(Cookies.get('courses'));
                     }
                     else{
-                        classCart = JSON.parse(Cookies.get('courses'));
+                        Cookies.set('courses', "");
                     }
                     slider = document.getElementById('hourSlider');
                     noUiSlider.create(slider, {
