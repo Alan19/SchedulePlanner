@@ -119,7 +119,7 @@
 			        timeCell.innerHTML = convertToStandardFormat(classCart[i].timeStart) + "-" + convertToStandardFormat(classCart[i].timeEnd);
 			        for(j=0;j<7;j++){
 			            cell=row.insertCell();
-			            id = classCart[i].name.replace(/\s+/g, '');
+			            id = removeWhitespace(classCart[i].name);
 			            if(classCart[i].days[j]){
 			                cell.innerHTML = `<td>
 			                    <div class="card scheduleCard ${classCart[i].color+" darken-1 " + id}"}">
@@ -144,7 +144,7 @@
 			function printClasses(){
 			    classCards = $('.class-cards');
 			    for(i = 0; i<classCart.length; i++){
-			        id = classCart[i].name.replace(/\s+/g, '');
+			        var id = removeWhitespace(classCart[i].name);
 			        classCards.append(
 			            `<div class="${id}">
 			                <div class="card ${classCart[i].color+' darken-1'}">
@@ -160,7 +160,7 @@
 												<p>This will delete this class forever!!!</p>
 			                </div>
 			                <div class="modal-footer grey lighten-3">
-			                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick = "deleteClass('${classCart[i].name}', '${classCart[i].name.replace(/\s+/g, '')}')">Yes</a>
+			                  <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat" onclick = "deleteClass('${classCart[i].name}', '${id}')">Yes</a>
 												<a href="#!" class="modal-action modal-close waves-effect waves-red btn-flat">No</a>
 			                </div>
 			              </div>
@@ -170,15 +170,15 @@
 			    }
 			}
 			function deleteClass(className, id){
-			    for(i = 0; i < classCart.length; i++){
+			    for(var i = 0; i < classCart.length; i++){
 			        if(className == classCart[i].name){
+						// console.log("Found");
 			            index = i;
-			            break;
 			        }
 			    }
 			    $(`.${id}`).addClass('animated bounceOut');
 			    $(`.${id}`).one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend',function(event){
-			      	classCart.splice(i, 1);
+			      	classCart.splice(index, 1);
 					Cookies.set('courses', JSON.stringify(classCart));
 					scheduleTable.innerHTML = `
 						<td></td>
@@ -199,7 +199,7 @@
 			}
 			
 			function removeWhitespace(sentence){
-				sentence.replace(/\s+/g, '');
+				return sentence.replace(/\W/g, '');
 			}
 		</script>
 	</head>
